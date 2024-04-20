@@ -1,0 +1,309 @@
+# Linux 笔记
+## Content
+- [命令帮助](#命令帮助)
+- [目录](#目录)
+- [文件](#文件)
+- [系统](#系统)
+- [vim](#vim)
+- [shell脚本](#shell脚本)
+
+## 命令帮助
+
+- 光标：方块左侧为backspace，方块为replace
+- root
+    ```bash
+    user@machine:~$ # /home/user
+    root@machine:~# # /root
+    ```
+- `&&` 短路,前命令成功再执行后面;
+    `||` 短路，前命令失败再执行后面
+- 命令参数：长格式`--` 短格式`-`
+
+        Ctrl+C(^C) 终止进程
+        Ctrl+Z 或 命令末尾加& 后台执行
+        Ctrl+U 清除行
+        Ctrl+L 清屏 或$clear
+        Ctrl+Alt+T 打开终端
+        Ctrl+D / exit 退出终端
+        Ctrl+S 挂起
+        Ctrl+Q 解冻
+        history查看历史命令
+
+- `.`开头隐藏文件
+- 正则表达式通配符  
+    - `*` 0至多个 `+` 1至多个 `？` 1个字符匹配  
+    - `[abc]`和括号内其一匹配，`[!abc]`和除abc外匹配
+- `man cmd`查看帮助文档  
+    `info cmd`详细说明
+- `which` 命令在PATH变量的路径  
+    `whereis` 命令的源文件、可执行文件、帮助文件搜索路径
+- `less` TUI查看文本  
+    `more` CLI查看文本
+    - `/`向下搜索
+    - `?`向上搜索
+    - `n`下一个关键词
+    - `N`上一个
+
+## shell脚本
+
+代理
+```sh
+export http_proxy="http://127.0.0.1:7890"
+export https_proxy="http://127.0.0.1:7890"
+```
+
+重定向和管道
+```bash
+cmd < doc_in > doc_out # 清除覆写模式
+cmd >> doc # 追加模式
+1> 2> # 标准和错误的重定向
+cmd > log 2>&1 # 2错误重定向到1
+cmd &> doc # 1标准 和 2错误 都写入
+
+
+cmd1 > tmpfile && cmd2 < tmpfile # cmd1 | cmd2
+cmd1 | tee abc.log | cmd2 # 既输出又记录
+```
+
+变量
+- `read name`终端读入变量
+- `your_name="runoob"`定义变量，=不留空格，字符串单引号双引号无引号均可
+- `declare/typeset -i my_integer=42`整数变量，否则默认字符串
+- `my_array=(1 2 3 4 5) | my_array[0]=1 | declare -A my_array`数组
+- `my_array[@]`读取所有元素
+
+特殊变量
+- `$`或`${}` 引用变量
+- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态`特殊变量
+- `${n1}${n2} 'a''b'` 直接拼接
+- 变量名大写
+
+转义
+- `\`连接换行
+- 双引号转义多个字符; 单引号不转义不能有变量; 反引号返回执行后结果
+- <code>val=`expr 2 + 2`</code>获得表达式，反引号可换为<code>$()</code>
+- `awk '{print $0}' 122.txt`打印所有内容，$n表示第n个字段（列），n=0表示整行
+- `[ $a == $b ]`**表达式和运算符之间要有空格，条件表达式要放在方括号之间，并且要有空格**
+- 乘号(*)前边必须加反斜杠(\)才能实现乘法运算
+- `${#string}`得到字符串长度
+- `${string:1:4}`切片，索引0开始，包括1和4
+- `${1:-"default"}`使用${1}输入第一参数，如果为空则使用默认值"default"
+
+条件判断  
+```bash
+# 数字比较 -ne -gt -lt -ge -le
+# 布尔：!:not -o:or -a:and
+# 逻辑： && ||
+# 字符串比较：== != -z长度为0 -n长度不为0
+[ -d $file ] # 文件测试 -d目录存在 -f普通文件存在 -e文件或目录存在
+if [ "$a" -eq "$b" ]
+if ((1==1)) # like C language
+then
+    echo "true"
+elif [ "$a" -nq "$b" ]
+    ...
+else
+    echo "false"
+fi
+if [ "$a" -eq "$b" ]; then # then在同一行就要有分号
+
+case ${VAILE} in
+    "1")
+        echo "我是1"
+    ;;
+    *)
+        echo "我不是1，也不是2"
+    ;;
+esac
+```
+
+循环  
+```bash
+for n in 1 3 5
+for idx in {00...40}
+do
+    echo "${n}"
+done
+for ((n=0;n<3;n++)) # like C language
+
+while [...] # 或until ((a==b))
+do
+    ...
+done
+```
+
+函数  
+```bash
+function fun(){
+    ...
+}
+```
+
+PATH变量
+```bash
+PATH=$PATH:/... # 追加
+export PATH # 变为全局变量多用户使用
+```
+
+script
+```bash
+chmod +x a.sh | chmod 777 a.sh
+source a.sh | . a.sh # 当前shell执行
+bash a.sh # 子shell执行
+./a.sh # 子shell执行，需要chmod +x权限
+```
+
+## 目录
+
+`cd -` 切换上一次目录
+
+ls
+- `-a` 显示包括隐藏文件
+- `-l` 列表查看
+- `-h` 用更好的单位显示大小
+- `-lrt` 时间排序列表显示
+
+`find dir -name ‘name’` 查找文件
+
+## 文件
+
+`wget -O name -P path -c(断点继续) URL`  
+`mount -o loop [device] [dir]`挂载  
+`umount [dir]`解挂  
+`zip abc.zip file` 压缩zip  
+`unzip file -d <dir>` 解压zip
+    - `-v` 查看但不解压
+
+`tar -zcvf abc.tar doc1 doc2 ...` 归档（打包）且压缩
+    - `-c` 打包文件 `-x` 解开档案  
+    - `-v` 列出详细过程  
+    - `-f <name>` 指定档案文件名称，用.tar/.tar.gz结尾
+    - `-z` 以gzip压缩或解压  `J`.xz
+    - `-C <dir>` 解压到指定目录
+
+`grep pattern file1 file2...`选择搜索，pattern可选加`""`
+    - `-v` 反选
+    - `-n` 返回行号
+
+## 系统
+
+```bash
+free -h # 查看内存信息
+cat /proc/meminfo
+cat /proc/version # 显示正在运行的内核版本  
+lsb_release -a
+cat /etc/issue # 显示发行版本信息 
+df -h # 查看分区使用情况
+cat /proc/cpuinfo # 查看cpu相关信息，包括型号、主频、内核信息等
+```
+
+用户
+```bash
+# 省略用户名默认root用户
+su test # 切换到test用户，路径/root
+su - test # 路径/home/test
+exit # 返回之前用户
+sudo cmd # 要的是用户密码，一段时间内不用重输
+```
+
+`ps -ef` 查看所有进程  
+`kill pid` 杀进程
+
+`chmod +x` 可执行属性
+
+```bash
+apt install cmatrix # 用apt安装软件
+apt-get update # 更新软件列表
+apt-get upgrade # 更新版本
+apt-get list | grep [name] # 查看软件目录
+apt-get [purge] remove <package> # 删除软件及其配置文件
+apt-get autoremove # 删除没用的依赖包
+apt-get clean
+
+dpkg -i [name] # 安装deb文件包
+dpkg -l # 查看安装的软件
+dpkg -r [name] # 卸载软件
+```
+
+
+
+## vim
+
+- `$vim doc`打开编辑
+### 模式
+`esc`其他模式返回正常模式  
+`i`当前位置插入 `a`追加插入 `I / A` 行首/行末插入  
+`R`替换模式 `:`命令模式  
+`v`可视模式 `V`可视行模式 `Ctrl+V `可视块模式
+### 命令  
+- 保存：`:q`退出 `:w` 保存 `:saveas doc` 或 `:w doc` 另存为  
+    `ZZ` 或 `:x` 保存并退出 `:qa!` 退出所有正在编辑的文件  
+- 切换：`:e doc`打开文件 `:ls`显示打开的缓存  
+    `:bn :bp :n` 切换文件，可加`！`  
+    `:f` 显示文件名 `:f doc` 改名  
+- 其他：`:set un` 显示行号  
+    `:set shiftwidth?` 显示缩进数 `:set shiftwidth=10` 设置  
+    `:help title`显示帮助文档（如`:help w`或`:help` `:w`）
+### 重复
+`.` 重复上次命令  
+`N<cmd>`重复命令  
+`N.` 重复N次
+### 移动  
+- 基本移动: `hjkl` 左下上右  
+    `-` 上一行非空格 `+`下一行非空格  
+- 词： `w` 下一个词， `b` 词初， `e` 词尾 （词：小写：类似变量，字母数字下划线；大写：空格分隔英文）  
+- 行： `0` 行初 `$` 行尾 `^` 第一个非blank字符 `g_` 最后一个非blank字符  
+- 屏幕： `H` 屏幕首行， `M` 屏幕中间， `L` 屏幕底部  
+- 翻页： `Ctrl-u` 上翻 `Ctrl-d` 下翻  
+- 文件： `gg` 文件头， `G` 文件尾  
+- 行数： `:{行数}<CR>` 或 `{行数}G/gg` 跳转后`Ctrl+O`返回跳前位置  
+- 查找： `%` 找到配对 `*` / `#` 匹配光标对应单词下/上一个  
+    `f` / `t` / `F` / `T{字符}` 查找在本行字符，光标：`f`对应，`t`在前（不处理目标），方向：小写向后，大写向前  
+- 搜索: `/`或`?{字符串}` `<enter>`  
+    `/` 向下 `?` 向上；`n`下一个 `N`上一个
+### 编辑  
+**`{start移动命令}{编辑命令}{end移动命令}` 选择区域操作，start可选（start=光标位置）**  
+`r{字符}` 替换光标字符  
+`>> / <<`  缩进  
+`o` / `O` 在下/上插入行，进入插入模式  
+`d{移动命令}` 删除（剪切），如`dw` 删除词, `d$` 或 `D` 删除到行尾, `dd` 删除行并保存到剪切板  
+`c{移动命令}` 改变，相当于`d{移动命令}` 再 `i` 如`cw` 改变词，`cc`替换行  
+`x` / `X` 删除字符（等同于 `dl`） 大写删除游标前的字符  
+`s` 替换字符（等同于 `xi`）  
+`u` 撤销, `<C-r>（Ctrl+R）` 重做  
+`y` 复制（其他一些命令比如 `d` 也会复制）  
+`yy` 拷贝当前行，`p`/`P`粘贴下/上一行，类似于`ddp`交换2行位置  
+`p`/`P` 当前位置（方块光标）后/前粘贴  
+`~` 改变字符的大小写
+### 修饰语
+- `{action}N{a / j}{object}` 查找操作
+    action=y / d / v / c
+    N可认为嵌套数 a包含obj，i不含obj
+    object=w 变量单词 W空格单词 s句子 p 段落；也可以时引号、括号等匹配
+
+`ci(` 改变当前括号内的内容  
+`ci[` 改变当前方括号内的内容  
+`da'` 删除一个单引号字符串， 包括周围的单引号
+### 自动补齐
+`Ctrl+P` / `Ctrl+N`
+### 宏
+`qa` 开始记录到寄存器a  
+`q` 结束录制  
+`@a` 回放宏a  
+`@@` 回放最新的宏，和次数连用：`N@@`  
+示例：连写1~100递增，Ctrl+A递增
+### 块操作（v可视模式）
+`J` 连成一行
+`<` / `>` 左右缩进 `=` 自动缩进
+`I` / `A` 插入，`esc`完成操作
+### 分屏
+- 启动：`vim -On file1 file2 ...` | `-o`垂直 `-O`水平
+- 关闭窗口：`Ctrl+w` | `c`
+- 分屏：`Ctrl+W` | `s` / `v` 垂直/水平分割当前文件 :sp/vsp doc 新文件
+- `:new` 打开窗口
+- 移动光标：`Ctrl+W` | `hjkl / w` | `w`为下一个
+- 移动分屏：`Ctrl+W` | `HJKL`
+- 屏幕尺寸：`Ctrl+W` | `=` / `+` / `-` 一样 / `++` / `--`
+- 选择文件：`Vex`
+
+
