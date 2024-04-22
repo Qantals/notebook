@@ -5,6 +5,8 @@
 \TeX{} 花括号阻止其忽略空格
 星号看作一种特殊的可选参数
 
+在使用xelatex编译时，如果你使用ctex文档类，它会在底层调用xeCJK宏包，所以无需重新调用。
+
 环境：
 \begin{⟨environment name⟩}[⟨optional arguments⟩]{⟨mandatory arguments⟩}
 …
@@ -24,8 +26,8 @@
 行末使用 \par 命令分段
 
 转义
-\^{} \~{} 避免重音
-\textbackslash
+\^{} \~{} 重音，加括号不重音
+\textbackslash 反斜杠
 \\手动换行
 \\[⟨length⟩]
 \\*[⟨length⟩] % 禁止分页
@@ -44,13 +46,15 @@ dif{}f{}icult % 连字
 
 单引号 ‘ 和 ’ 分别用 ` 和 ' 输入；双引号 “ 和 ” 分别用 `` 和 '' 输入(" 可以输入后双引号)
 
-连字号（hyphen）、短破折号（en-dash）和长破折号（em-dash）
+连字号-（hyphen）、短破折号表示数字范围--（en-dash）和长破折号---（em-dash）
 
 \dots = \ldots 命令表示省略号
 
 \P{} \S{} \dag{} \ddag{} % 章节
 
 ~ 输入一个不会断行的空格
+
+字体：\textbf:bold \textit:italics \underline \emph{}
 
 
 ```
@@ -72,14 +76,14 @@ dif{}f{}icult % 连字
 
 % 标题页
 \title{⟨title⟩}
-\author{\thanks{} \and } % \thanks表示脚注
+\author{Hubert Farnsworth\thanks{Funded by the Overleaf team.} \and } % \thanks表示脚注
 \date{\today}
 \maketitle
 
 \bibliography{books} % 利用 BibTeX 工具从数据库文件 books.bib 生成参考文献
 
 % 超链接引用
-\label{⟨label-name⟩} % label=sec:this
+\label{⟨label-name⟩} % label=sec:this fig:frog table:third
 \ref{⟨label-name⟩}
 \pageref{⟨label-name⟩}
 
@@ -134,7 +138,7 @@ array 宏包提供了辅助格式 > 和 <，用于给列格式前后加上修饰
 % 图片
 建议使用 xelatex 命令
 \usepackage{graphicx}
-\includegraphics[⟨options⟩:key=value]{⟨filename⟩} % 图片文件的扩展名一般可不写
+\includegraphics[⟨options⟩:key=value-width=0.75\textwidth]{⟨filename⟩} % 图片文件的扩展名一般可不写
 % 文件名不要有空格/点号
 options=width, height, scale, angle(逆时针)
 \graphicspath{{figures/}{logo/}} % 省写路径
@@ -163,6 +167,11 @@ caption包：修改 \figurename 和 \tablename
 ## 公式
 ```latex
 amsmath
+% 行内公式
+\$ \\( \) 
+\begin{math}
+\end{math}
+
 % 行间公式：
 \begin{equation}
 a 2 + b2 = c 2
@@ -170,7 +179,8 @@ a^2 + b^2 = c^2 \label{pythagorean} | \tag{修改编号}
 (4.1)
 \end{equation}
 引用：\eqref{pythagorean}有圆括号 \ref{pythagorean}
-\[ 和 \] 包裹 | equation* 环境 | \notag % 没有编号
+% 没有编号
+\[ \] 包裹 | equation* 环境 | \notag 不建议用$$ ... $$
 
 % 数学模式
 \quad 和 \qquad \␣ \, \: \; \!(负间距) % 空格
@@ -179,20 +189,19 @@ a^2 + b^2 = c^2 \label{pythagorean} | \tag{修改编号}
 f''^{2}(x) f'(x) % 导数
 \dfrac(放大) 和 \tfrac(缩小) % 分式
 \sqrt[3]{2}
-自定义二元关系符的命令 \stackrel{*}{\approx}
+自定义二元关系符的命令 \stackrel{*}{\approx}加在约等号上面
 \cdot % 点乘
-\DeclareMathOperator{\argh}{argh} % 自定义算符
-\DeclareMathOperator*{\nut}{Nut} % 带上下限
+\dot{} 上方加点
 \sum\limits_{i=1}^n： \limits(上下) \nolimits(右上右下) % 巨算符上下标位置
 \substack % 能够在下限位置书写多行表达式
 
 一般应当对某个符号而不是“符号加下标”使用重音
 \{ \} \langle \rangle \left( \right) 控制括号大小可变 % 不允许断行
-有left就有right，所以单个界定符用点\left. \right|单个竖线
+有left就有right，只想要一个：另一个单个界定符用点.
 \big( \big)\bigg \bigl \biggl % 允许断行
 
-% 公式对齐
-\begin{align} % 不用eqnarray
+% 公式对齐/多行公式
+\begin{align} % 不用eqnarray了
 a & = b + c \\
 & = d + e
 \end{align}
@@ -205,6 +214,18 @@ array，cases，matrix，bmatrix，vmatrix环境：数组和矩阵，分类
 % 数学字体
 \boldsymbol{M}
 package{bm}: \bm{M}
+\textstyle 行内公式尺寸-注意分组
+
+% 定义max,ln等函数时：
+$\mathop{\mathrm{max}}$           % 可以在正上方加上下标了，也可以有正确的前后间距了
+$\operatorname{arccot}$           %   不能把上下标放在符号的正上方/正下方
+$\operatorname*{max}$             %   可以把上下标放在符号的正上方/正下方
+% operatorname 打包成DeclareMathOperator
+\DeclareMathOperator{\argh}{argh} % 导言区自定义算符max log等
+\DeclareMathOperator*{\nut}{Nut} % 带上下限
+
+\lvert z \rvert |z|
+\lVert z \rVert ||z||
 
 ```
 
@@ -289,15 +310,87 @@ twoside/oneside
 fancyhdr宏包
 ```
 
-## 特色
+## 参考文献
 ```latex
+% normal
+\cite{⟨citation⟩}
+\begin{thebibliography}{⟨widest label⟩}
+ \bibitem[⟨item number⟩]{⟨citation⟩} ...
+\end{thebibliography}
+BIBTEX 用样式(style)来管理参考文献的写法 样式文件以 .bst 为扩展名
+数据库文件名为 books.bib
+\bibliographystyle{plain =.cls格式文件，不需要后缀}
+\cite{<citation>= \cite 命令使用的文献标签}
+\bibliography{<bib-name⟩ 没有.bib扩展名}
+xelatex -> bibtex -> xelatex * 2
 
+% natbib宏包
+\citep{⟨citation⟩}
+\citet{⟨citation⟩}
 
+% biblatex宏包
+\usepackage[style=gb7714-2015]{biblatex}
+\usepackage[bibstyle=gb7714-2015,citestyle=authoryear]{biblatex}
+\addbibresource{xx.bib}
+\cite \citeauthor \citeyear \textcite \parencite \footcite
+\printbibliography
+xelatex -> biber -> xelatex * 2
+著录样式(bibliography style)和引用样式(citation style)， 分别以 .bbx 和 .cbx 为扩展名。
 
+% 索引
+\usepackage{makeidx}
+\makeindex % 导言准备
+\index{⟨index entry⟩}
+\printindex
+\index{⟨index entry⟩}
+
+% 颜色
+color xcolor 宏包
+\color[⟨color-mode⟩]{⟨code⟩=颜色比例} % 建议使用{}分界
+\color{⟨color-name⟩}
+
+% 超链接
+习惯上将 hyperref 宏包放在其 它宏包之后调用。
+\hypersetup{⟨option1⟩,⟨option2⟩=⟨value⟩,...}
+\usepackage[⟨option1⟩,⟨option2⟩=⟨value⟩,...]{hyperref}
+\url{⟨url ⟩}
+\nolinkurl{⟨url ⟩}
+\href{url}{⟨text⟩}
+\hyperref[⟨label⟩]{⟨text⟩}
 
 
 ```
 
+## 自定义命令
+```latex
+\newcommand{\⟨name⟩}[⟨num⟩ of args]{⟨definition⟩}
+\renewcommand
+\newenvironment{⟨name⟩}[⟨num⟩]{⟨before⟩}{⟨after⟩}
+\renewenvironment
+\newcommand{\examplea}[1]{% #1 can contain \par
+}
+\newcommand*{\exampleb}[1]{% #1 cannot contain \par : has better error checking
+}
+
+
+宏包：.sty 作扩展名\ProvidesPackage{⟨package name⟩}
+.cls文件定义文档类
+
+% 计数器
+\newcounter{⟨counter name⟩}[⟨parent counter name⟩]
+\setcounter{⟨counter name⟩}{⟨number⟩}
+\addtocounter{⟨counter name⟩}{⟨number⟩}
+\stepcounter{⟨counter name⟩}
+\setcounter 将数值设为 ⟨number⟩;\addtocounter 将数值 加上 ⟨number⟩;\stepcounter 将数值加一，并将所有下级计数器归零。
+输出格式由 \the⟨counter⟩ 表示 like: \thesection
+重定义输出格式\renewcommand\theequation{\Alph{equation}}
+
+secnumdepth 计数器控制章节编号的深度，如果章节的层级大于 secnumdepth，那么章节的 标题、在目录和页眉页脚的标题都不编号
+\setcounter 命令设置
+或者设置一个较小的数以取消编号，如设置为 -1 令 \chapter 不编号
+tocdepth 计数器计数目录
+
+```
 
 ## 宏包
 ```latex
@@ -320,6 +413,8 @@ ulem % 下划线
 layout % 页边距
 geometry % 页面参数
 fancyhdr % 页眉页脚
-
+biblatex % 引用
+xparse % 自定义环境
+titlesec % 定制中文模板ctex
 
 ```

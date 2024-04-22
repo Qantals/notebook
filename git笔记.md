@@ -71,10 +71,12 @@ ssh-keygen -t rsa -C <email> # 建立ssh秘钥 or ~/.ssh/id_rsa.pub
 # 版本指针：`HEAD`为当前版本，`HEAD^^`为上2版本，`HEAD~5`为上5个`^版本
 git branch [--list] # 列出本地所有分支（返回带*表示当前分支）  
 git branch -r # 列出所有远程分支
+git branch -M <old_branch> master # 重命名
+git config --global init.defaultBranch master
 
 git branch <分支名> # 新建分支但不切换
 git checkout <分支名> | git switch <分支名> #切换分支
-git checkout -b <分支名> | git switch -c <分支名> #新建分支并切换 或
+git checkout -b <分支名> | git switch -c <分支名> #新建分支并切换
 
 git branch -d <分支名> #删除分支  
 git merge <分支名> #合并指定分支到当前分支  
