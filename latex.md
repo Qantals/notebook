@@ -121,6 +121,7 @@ dif{}f{}icult % 连字
 
 % 表格
 \caption % 加标题
+% tabular放在table浮动体环境
 \begin{tabular}[⟨align⟩:t/b]{⟨column-spec⟩:|l/c/r|} % @{text} 插入任意内容 @{} 可直接用来消除单元格前后的间距
 ⟨item1⟩ & ⟨item2⟩ & … \\
 \hline
@@ -161,6 +162,14 @@ caption包：修改 \figurename 和 \tablename
     \includegraphics[width=...]{...} \\[...pt]
     \includegraphics[width=...]{...}
     \caption{...}
+\end{figure}
+
+或者：subcaption宏包
+\begin{figure}
+    \subfigure[]{
+    \includegraphics{...}}
+    \subfigure[]{
+    \includegraphics{...}}
 \end{figure}
 ```
 
