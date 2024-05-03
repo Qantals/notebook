@@ -170,6 +170,7 @@ ls
 ## 文件
 
 `wget -O name -P path -c(断点继续) URL`  
+`sh -c "$(curl -fsSL URL)"`静默模式安装
 `mount -o loop [source] [dir]`挂载  
 `umount [dir]`解挂  
 `zip abc.zip file` 压缩zip  
