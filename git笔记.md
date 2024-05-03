@@ -56,14 +56,16 @@ git remote set-url <origin> <URL> # 重置URL
 git remote [-v] # 查看远程仓库名[信息]
 git remote rm <仓库名origin> # 解除与远程库绑定
 
-git push [-u] <origin> <master> # 第一次用[-u]
-git pull
+git push [-u] <origin> <master> # 第一次用[-u]，以后直接git push
+git pull --rebase <origin> <master> # 从remote拉取commit并把本地作为最新commit，解决conflict
 
 git checkout -b <new分支名> origin/<new分支名> 在本地创建和远程分支对应的分支  
 git branch --set-upstream-to=origin/<new分支名> <new分支名> 建立本地分支和远程分支的关联  
 git push origin --delete <分支名> 删除远程分支
 
-ssh-keygen -t rsa -C <email> # 建立ssh秘钥 or ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa/ed25519 -C <email> # 建立ssh秘钥 or ~/.ssh/id_rsa.pub
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@ip # 复制ssh公钥到服务器
+ssh -i ~/.ssh/id_rsa user@ip # 登陆
 ```
 
 ## 分支命令
