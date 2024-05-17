@@ -17,16 +17,17 @@
 
 ## Circuit equation formulation
 - label nodes and branches: node voltage (potential) $e_i$, branch current $i_i$, branch voltage $v_i$
-- graph theory: write a system matrix. $G=(V,E)$ where $V$ is set of vertices(顶点,nodes), $E$ is set of edges(branches)
+- graph theory: write a system matrix. $G=(V,E)$ 
     - spanning tree(生成树): connect all vertices without loops.
-    - fundamental loop(add only one edge), cutset(set of branches, leave graph disconnected), fundamental cutset(consists of only one edge of $G$)
+    - fundamental loop(add only one edge), cutset(set of branches, leave E disconnected), fundamental cutset(consists of only one edge of spanning tree)
     - only write fundamental loops for KVL and fundamental cutset for KCL
-        - KCL: 5 branches, 6 nodes: $A_{5\times 8}\vec{i}_{8\times 1}=\vec{0}$
-        - KVL: $A^Te=V$ (?)
+        - KCL: 6 nodes, 5 branches, 8 edges for G: $A_{5\times 8}\vec{i}_{8\times 1}=\vec{0}$ (#node-1 columns, #branch columns) (?)
+        - KVL: $B_{3\times 8}\vec{v}_{8\times 1}=\vec{0}$ (?)
 - method
     - STA = Sparse Tableau Analysis
+        - need KCL, KVL, circuit element(branch) equations $K_ii+K_vv=S$ ($b$ equations, express source, v-i equation, $K_i$ and $K_v$ are diagonal matrices)
         - $\begin{bmatrix} A & 0 & 0\\ 0 & I & -A^T\\ K_i & K_v & 0 \end{bmatrix} \begin{bmatrix} i \\ v \\ e \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ S \end{bmatrix}$
-        - applied to any circuit
+        - applied to any circuit, directly from input data, sparse
         - coefficient matrix is very sparse, require sophisticated programming skills and data structure
     - MNA = Modified Nodal Analysis
         - more compact than STA

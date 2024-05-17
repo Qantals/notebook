@@ -19,7 +19,7 @@
 5. power and thermal optimization in VLSI circuits
 6. introduction of other topics in VLSI design automation
 
-## textbookd and references
+## textbook and references
 - chapter 1,2,3,4
 - chapter 2,3,5 with project
 
