@@ -169,6 +169,7 @@ ls
 
 ## 文件
 
+`du -sh folder` 检查文件夹大小
 `wget -O name -P path -c(断点继续) URL`  
 `sh -c "$(curl -fsSL URL)"`静默模式安装
 `mount -o loop [source] [dir]`挂载  
