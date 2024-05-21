@@ -25,22 +25,26 @@
         - KVL: $B_{3\times 8}\vec{v}_{8\times 1}=\vec{0}$ (?)
 - method
     - STA = Sparse Tableau Analysis
-        - need KCL, KVL, circuit element(branch) equations $K_ii+K_vv=S$ ($b$ equations, express source, v-i equation, $K_i$ and $K_v$ are diagonal matrices)
+        - need KCL, KVL, circuit element(branch) equations $K_ii+K_vv=S$ ($b$ equations, express source, v-i equation, admittance form, $K_i$ and $K_v$ are diagonal matrices)
         - $\begin{bmatrix} A & 0 & 0\\ 0 & I & -A^T\\ K_i & K_v & 0 \end{bmatrix} \begin{bmatrix} i \\ v \\ e \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ S \end{bmatrix}$
         - applied to any circuit, directly from input data, sparse
         - coefficient matrix is very sparse, require sophisticated programming skills and data structure
     - MNA = Modified Nodal Analysis
         - more compact than STA
-        - Nodal Analysis: $i=ge$ write KCL -> use branch equations to eliminate -> use KVL to eliminate(relative potential)
+        - Nodal Analysis: write KCL -> use branch equations to eliminate -> use KVL to eliminate(using $e$ to substitude $v$)
             - beneficial:
                 - equation can be assembled by inspection
                 - $Y_n$ is sparse but smaller than STA, has non-zero diagonal entrices and is often diagonally dominant
             - drawback: can not handle:
                 - floating independent voltage
-                - VCVS, CCVS, CCCS
+                - VCVS, CCVS, CCCS (not allowed form $i=gv$)
         - step: write KCL -> use branch equations to eliminate(leave current source form) -> wirte unused branch equations -> use KVL to eliminate
         - $\begin{bmatrix} Y_n & B \\ C & 0 \end{bmatrix} \begin{bmatrix} e \\ i \end{bmatrix} = MS$
-        - put inductor another row, because we dont't want 1/s in frequency domain.
+        - stamp for computers
+        - not write ground node(row)
+        - write capacitor and inductor in another matrix(derivative term). put inductor another row, because we don't want 1/s in frequency domain.
+        - applied to any circuit.
+        - sometimes have zeros on the main diagonal, not invertable.
 
 ## Sparse matrix techniques in VLSI circuit model
 
