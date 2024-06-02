@@ -10,29 +10,14 @@
 ## 命令帮助
 
 - 光标：方块左侧为backspace，方块为replace
-- root
-    ```bash
-    user@machine:~$ # /home/user
-    root@machine:~# # /root
-    ```
-- `&&` 短路,前命令成功再执行后面;
-    `||` 短路，前命令失败再执行后面
-- 命令参数：长格式`--` 短格式`-`
 
-        Ctrl+C(^C) 终止进程
+
         Ctrl+Z 或 命令末尾加& 后台执行
         Ctrl+U 清除行
         Ctrl+L 清屏 或$clear
-        Ctrl+Alt+T 打开终端
-        Ctrl+D / exit 退出终端
         Ctrl+S 挂起
         Ctrl+Q 解冻
-        history查看历史命令
 
-- `.`开头隐藏文件
-- 正则表达式通配符  
-    - `*` 0至多个 `+` 1至多个 `？` 1个字符匹配
-    - `[abc]`和括号内其一匹配，`[!abc]`和除abc外匹配
 - `man cmd`查看帮助文档  
     `info cmd`详细说明
 - `which` 命令在PATH变量的路径  
@@ -42,17 +27,35 @@
     - `b/f(space) u/d j/k` 翻页
     - `/`向下搜索 `?`向上搜索 `n`下一个关键词 `N`上一个
 - `cat /etc/shells` 查看所有shell
-- `#!/bin/sh` 调用制定sehll
+- `#!/bin/sh` shebang
 - `$SHELL` 查看默认sehll
 - `chsh -s /bin/zsh` 修改默认sehll
+- `xdg-open [doc]` open with default app
 
-## shell脚本
+- `find <dir> -name/iname 'name'` 查找文件
+- `grep <pattern> <file>` 筛选所在行
 
-代理
-```sh
-export http_proxy="http://127.0.0.1:7890"
-export https_proxy="http://127.0.0.1:7890"
+参数用white space分隔
+```bash
+echo hello
+echo "hello world"
+echo hello\ world
+/usr/bin/echo world
 ```
+
+PATH
+```bash
+echo $PATH # separated by :
+which echo # find path in PATH
+PATH=$PATH:/... # 追加
+export PATH # 变为全局变量多用户使用
+```
+
+ls  
+number of hard links | owner | group | size | date of modified  
+Read permission of directory: ls.  
+Execute permission of directory: cd to this. And cd
+need execute permission of all parent directories.
 
 重定向和管道
 ```bash
@@ -62,9 +65,45 @@ cmd >> doc # 追加模式
 cmd > log 2>&1 # 2错误重定向到1
 cmd &> doc # 1标准 和 2错误 都写入
 
-
 cmd1 > tmpfile && cmd2 < tmpfile # cmd1 | cmd2
-cmd1 | tee abc.log | cmd2 # 既输出又记录
+cmd1 | tee abc.log | cmd2 # tee 既输出又记录
+ls -l | tail -n1 # output end of 1 line
+sudo echo 50 > /sys/class/backlight/amdgpu_b10/brightness # permission denied: Shell but not sudo use pipeline.
+echo 50 | sudo tee brightness # This is OK.
+```
+
+root
+```bash
+# 省略用户名默认root用户
+sudo su
+su test # 切换到test用户，路径/root
+su - test # 路径/home/test
+```
+
+script
+```bash
+chmod +x a.sh | chmod 777 a.sh
+source a.sh | . a.sh # 当前shell执行
+bash a.sh # 子shell执行
+./a.sh # 子shell执行，需要chmod +x权限
+```
+
+homework:`curl --head --silent https://missing.csail.mit.edu | grep last-modified | cut --delimiter=' ' -f1 --complement > ~/last-modified.txt`
+
+## shell脚本
+代理
+```sh
+export http_proxy="http://127.0.0.1:7890"
+export https_proxy="http://127.0.0.1:7890"
+```
+
+error code
+```bash
+&& # 短路,前命令成功再执行后面
+|| # 短路，前命令失败再执行后面
+true # code=0
+false # code=1
+; # concatenate many commands in one line
 ```
 
 变量
@@ -76,9 +115,12 @@ cmd1 | tee abc.log | cmd2 # 既输出又记录
 
 特殊变量
 - `$`或`${}` 引用变量
-- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态`特殊变量
+- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态 $_上个命令最后一个参数 $$程序PID`特殊变量
+- `sudo !!`再执行上一次命令
 - `${n1}${n2} 'a''b'` 直接拼接
 - 变量名大写
+- `foo=$(pwd)` 保存pwd命令输出结果为foo变量
+- `cat <(ls)` 将命令的输出临时保存为变量
 
 转义
 - `\`连接换行
@@ -137,35 +179,12 @@ done
 函数  
 ```bash
 function fun(){
-    ...
+    mkdir -p "$1"
 }
+# 调用
+source a.sh
+fun arg1 arg2
 ```
-
-PATH变量
-```bash
-PATH=$PATH:/... # 追加
-export PATH # 变为全局变量多用户使用
-```
-
-script
-```bash
-chmod +x a.sh | chmod 777 a.sh
-source a.sh | . a.sh # 当前shell执行
-bash a.sh # 子shell执行
-./a.sh # 子shell执行，需要chmod +x权限
-```
-
-## 目录
-
-`cd -` 切换上一次目录
-
-ls
-- `-a -l` 
-- `-h` 用更好的单位显示大小
-- `-lrt` 时间排序列表显示
-
-`find <dir> -name/iname 'name'` 查找文件(iname不区分大小写)
-`grep <pattern> <file>` 筛选所在行
 
 ## 文件
 
@@ -195,22 +214,14 @@ ls
 
 ```bash
 free -h # 查看内存信息
-cat /proc/meminfo
 cat /proc/version # 显示正在运行的内核版本  
 lsb_release -a
 cat /etc/issue # 显示发行版本信息 
 df -h # 查看分区使用情况
+du -sh
 cat /proc/cpuinfo # 查看cpu相关信息，包括型号、主频、内核信息等
 ```
 
-用户
-```bash
-# 省略用户名默认root用户
-su test # 切换到test用户，路径/root
-su - test # 路径/home/test
-exit # 返回之前用户
-sudo cmd # 要的是用户密码，一段时间内不用重输
-```
 
 `ps -ef` 查看所有进程  
 `kill pid` 杀进程
