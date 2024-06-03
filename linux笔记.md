@@ -9,30 +9,28 @@
 
 ## 命令帮助
 
-- 光标：方块左侧为backspace，方块为replace
-
-
-        Ctrl+Z 或 命令末尾加& 后台执行
-        Ctrl+U 清除行
-        Ctrl+L 清屏 或$clear
-        Ctrl+S 挂起
-        Ctrl+Q 解冻
-
+- 光标：方块左侧为backspace，方块为replace  
+    Ctrl+Z 或 命令末尾加& 后台执行  
+    Ctrl+U 清除行  
+    Ctrl+L 清屏 或$clear  
+    Ctrl+S 挂起  
+    Ctrl+Q 解冻
 - `man cmd`查看帮助文档  
     `info cmd`详细说明
+- `tldr cmd` show examples better than 'man'
 - `which` 命令在PATH变量的路径  
     `whereis` 命令的源文件、可执行文件、帮助文件搜索路径
 - `less` TUI查看文本  
     `more` CLI查看文本
     - `b/f(space) u/d j/k` 翻页
     - `/`向下搜索 `?`向上搜索 `n`下一个关键词 `N`上一个
-- `cat /etc/shells` 查看所有shell
-- `#!/bin/sh` shebang
-- `$SHELL` 查看默认sehll
-- `chsh -s /bin/zsh` 修改默认sehll
+- `#!/bin/sh` shebang  
+    - `#!/usr/bin/env bash(python)` is better
+- `cat /etc/shells` 查看所有shell  
+    `$SHELL` 查看默认sehll  
+    `chsh -s /bin/zsh` 修改默认sehll
 - `xdg-open [doc]` open with default app
-
-- `find <dir> -name/iname 'name'` 查找文件
+- `find <dir> -name/iname 'name' -type f` 查找文件
 - `grep <pattern> <file>` 筛选所在行
 
 参数用white space分隔
@@ -91,6 +89,8 @@ bash a.sh # 子shell执行
 homework:`curl --head --silent https://missing.csail.mit.edu | grep last-modified | cut --delimiter=' ' -f1 --complement > ~/last-modified.txt`
 
 ## shell脚本
+- `shellcheck example.sh` 检查shell脚本
+
 代理
 ```sh
 export http_proxy="http://127.0.0.1:7890"
@@ -120,7 +120,8 @@ false # code=1
 - `${n1}${n2} 'a''b'` 直接拼接
 - 变量名大写
 - `foo=$(pwd)` 保存pwd命令输出结果为foo变量
-- `cat <(ls)` 将命令的输出临时保存为变量
+- `cat <(ls)` 将命令的输出临时保存为文件  
+    - `diff <(ls dir1) <(ls dir2)`
 
 转义
 - `\`连接换行
@@ -163,6 +164,11 @@ esac
 
 循环  
 ```bash
+convert snow.{jpg,png} = convert snow.jpg snow.png # shortcut
+touch foo{,1,2} = touch foo foo1 foo2
+touch proj{1,2}/src/test{1,2,3}.py # Cartesian product
+touch {a..j}
+
 for n in 1 3 5
 for idx in {00...40}
 do
