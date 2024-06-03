@@ -115,7 +115,7 @@ false # code=1
 
 特殊变量
 - `$`或`${}` 引用变量
-- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态 $_上个命令最后一个参数 $$程序PID`特殊变量
+- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态 $_上个命令最后一个参数 $$程序PID $@所有的参数，用于for迭代`特殊变量
 - `sudo !!`再执行上一次命令
 - `${n1}${n2} 'a''b'` 直接拼接
 - 变量名大写
@@ -188,7 +188,6 @@ fun arg1 arg2
 
 ## 文件
 
-`du -sh folder` 检查文件夹大小
 `wget -O name -P path -c(断点继续) URL`  
 `sh -c "$(curl -fsSL URL)"`静默模式安装
 `mount -o loop [source] [dir]`挂载  
@@ -204,10 +203,6 @@ fun arg1 arg2
     - `-z`.gz  `j`.bz2 `J`.xz
     - `-C <dir>` 解压到指定目录
 
-`grep pattern file1 file2...`选择搜索，pattern可选加`""`
-    - `-v` 反选
-    - `-n` 返回行号
-
 `ln [-s] f1 f2` f2硬（软）链接到f1
 
 ## 系统
@@ -218,16 +213,12 @@ cat /proc/version # 显示正在运行的内核版本
 lsb_release -a
 cat /etc/issue # 显示发行版本信息 
 df -h # 查看分区使用情况
-du -sh
+du -sh file # folder usage
 cat /proc/cpuinfo # 查看cpu相关信息，包括型号、主频、内核信息等
 ```
 
-
 `ps -ef` 查看所有进程  
 `kill pid` 杀进程
-
-`chmod [-R] [ugoa…][-+=]perms…[,…] FILE...` 改变文件权限
-`chmod [OPTIONS] NUMBER FILE...`
 
 ```bash
 apt install cmatrix # 用apt安装软件
@@ -246,7 +237,6 @@ dpkg -r [name] # 卸载软件
 
 
 ## vim
-
 - `$vim doc`打开编辑
 ### 模式
 - `esc`其他模式返回正常模式
