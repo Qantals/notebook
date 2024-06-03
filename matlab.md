@@ -1,0 +1,278 @@
+# MATLAB
+
+## TOC
+- [基础](#基础)
+- [基本语法](#基本语法)
+- [绘图函数](#绘图函数)
+- [字符串](#字符串)
+- [符号计算](#符号计算)
+- [线性代数数据拟合](#线性代数数据拟合)
+- [数值微分积分](#数值微分积分)
+- [优化工具箱](#优化工具箱)
+- [随机变量模拟](#随机变量模拟)
+
+## 基础
+- basis
+    - F5执行程序
+    - clear A B  清除变量A、B 
+    - clear  清除工作空间变量
+    - clc  清除命令窗口内容
+    - who  查看工作空间所有变量
+    - whos a b  查看变量信息
+    - class("var")   返回变量类型显示为char型数组
+    - save("results.mat", "var_G", "var_C");
+    - %行注释
+- 常见函数
+    - x=a:step:b  构造行向量-等差数列（包含ab）step省略默认1。如果最后一个数超过b，则舍弃这个数（数列不会有超过b的数）
+    - linspace(a,b,n)  包含ab，分为n-1个区间（n个数）均匀节点
+    - a=fix(10\*rand(m,n))
+    - det(A) 求行列式 rank()求矩阵的秩
+    - factorial(n)  power()指数 pow2()2 的幂
+    - norm(n) 求范数 std()求标准差
+    - conj()共轭负数 real() imag() 取实部虚部
+- 索引
+    - 索引>=1不可越界，end表示最后（最后一行/列，线性索引-最后元素）
+    - 线性索引：单下标表示，向下遍历每一列
+    - 逻辑下标：取出logical数组内值为1的下标为原数组下标对应值，如：x(x>1)==x(find(x>1))取出x内所有大于1的值。
+    - A(r,:)第r行  A(:,c)第c列
+    - 指定子阵：A(行下标集，列下标集)下标集用另一个数组表示,数字不连续就是重新排列
+    - A(:)所有元素重新排列成列向量（先按列即线性索引）
+    - A(下标集)取出第几个元素（先按列）
+- 运算符
+    - A.’矩阵转置  A’矩阵共轭转置
+    - A\B矩阵左除（A^{-1}B）  A/B矩阵右除（AB^{-1}）（有时A为标量，B为矩阵也不行）
+    - A^n矩阵幂
+    - inv(A)求矩阵逆
+    - 数组运算符：（对应元素运算，A、B同维数或其一为标量）
+    - 关系运算符：~=不等与。成立值为1，不成立值为0。数组比较的是每个元素，结果为一个同维logical数组。
+    - 逻辑运算符：& | ~。0为假，1为真。
+- 数据结构
+    - Cell 元素可以是不同类型 a=cell(m,n) 存取数组元素a{i,j} 
+    - Struct 直接F.first=…
+- 其他
+    - 舍小数
+        - mod(a,b) 求模结果向-inf舍去  rem(a,b) 求余结果向0舍去
+        - floor(x)向-inf  fix(x)向0  ceil(x)向+inf round(x)四舍五入
+    - 指数 men=m*10^n或同C语言：3.5e7
+    - format long/short 更改命令行显示格式
+        - Format 恢复默认
+    - +eps  浮点精度值，加在除数防止除0
+    - 长语句 使用省略号（三个句点）...，后跟 Return 或 Enter 以指示该语句在下一行继续。
+    - 函数句柄
+        - 函数句柄通常在参数列表中传递给其他函数，然后，其他函数可以使用该句柄执行或计算相应函数。
+        - @ 在函数名称前面构造函数句柄
+        - 通过函数句柄来调用函数和一般一样
+
+
+ 
+## 基本语法
+- input(‘提示信息字符串’,’s’)  返回值为字符数组
+- disp(变量名)  显示变量内容而不显示变量名，自动换行。
+- fprintf(formatSpec,A1,A2…);
+- sum/mean(A,1)  求列返回行向量（优先处理列）
+- sum/mean(A,2)  求行返回列向量
+- [V,I]=max(x) 
+    - 向量：V为最大值，I为下标；
+    - 矩阵：V求列返回行向量，I行下标的行向量。
+- diag(A) 获取对角元素为列向量或组合成对角元素的矩阵
+- diag(diag(A)) 组合对角元素成对角阵
+- length(x)  向量：元素个数；矩阵：行数和列数的最大值
+- size(x)  行数、列数组成的向量
+- [B, I]=sort(a,’descend’)
+    - B为按递增排序后的元素
+    - I为排序后数组B中的元素在原数组v中的位置下标
+- idx=find(A)  查找非零元素
+    - 矩阵：返回非零值的下标组成列向量（线性索引）
+    - 向量：方向一致的下标向量
+- 选择、循环结构
+    - if 逻辑表达式1  语句块1 elseif else end
+    - switch switch_expr（一般为标量或字符串）
+    - case case_expr,  语句块1
+    - case {case_expr1, case_expr2, case_expr3,...},  语句块2
+    - otherwise,  语句块3
+    - end
+    - for 变量=初值:步长:终值  语句块  end
+    - for x=array按数组（array）中的每一列执行一次，x被指定为数组的下一列
+    - while 逻辑表达式  循环语句块  end
+- 函数编程：
+    - 脚本文件：不含函数定义，脚本程序中的变量在脚本执行完后仍然保留在工作空间中，并能被其它脚本程序所使用（对应函数变量-局部变量不留）。
+    - addpath('E:\mywork')
+    - path('E:\mywork', path)
+    - function [r1, r2, r3]＝funname(a1, a2, a3, a4)
+        - help 函数名 检查该函数是否为系统函数
+        - nargin，nargout输入参数个数，输出参数个数
+    - pause(n) 暂停n秒
+    - 文件名一般与程序中定义的主函数名相同；否则，调用该函数时以保存函数的文件名作为函数名来调用。
+    - 一个函数文件中的第一个函数是主函数，后面定义的其他函数称为子函数。
+    - 子函数只能被所在的函数程序文件中的其他函数调用。
+    - 子函数不能调用主函数。
+    - f(1:3,5:7)表示传入多个点(1,5)(2,6)(3,7)给f(x,y)
+    - 要计算多个点的函数值时，注意四种数组运算符的使用
+    - 匿名函数 f=@(x,y)((x.^2+y.^2<=1).*(x+y)+(x.^2+y.^2>1).*(x-y));
+    - ignore some outputs[~,~,ext] = fileparts(helpFile);
+ 
+## 绘图函数
+- hold on / hold off
+- grid on / grid off
+- subplot(1,2,1)
+- plot(x,y1,x,y,’-—r’,x,-y,’-—r’)画3条线，间断点会连接起来
+- fplot(@(x) sin(x))
+- legend('sin(x)','cos(x)')
+- title('Figure: Legend Example', 'interpreter', 'latex')
+- xlabel('str') ylabel('str')
+- colormap([1,0,0])
+- figure  创建一个图像；figure(n); n为标量，选中指定figure并操作
+- plot3(x1,y1,z1,’S1’,x2,y2,z2,’S2’)  画曲线
+- [X,Y]=meshgrid(x,y)  生成平面网格点，x,y为向量，X为x行扩展length(y)次，Y为y列扩展length(x)次。X、Y同型。这样按列顺序读，x不动y动，换一列x+1，y继续轮询。
+- mesh(x,y,z)  绘制曲面（连线染色）
+- surf(x,y,z)  （网格染色）
+- meshc(x,y,z)  meshz(x,y,z)  绘制等值线投影、边界垂帘的网格图
+- contour(x,y,z,n)  contour3(x,y,z,n)  绘制2维、3维等高线n条
+ 
+## 字符串
+- character array
+    - s1 = 'happy'
+    - s1(3) indexing
+    - concatenate [s1,s2]
+- string
+    - concatenate "happy" + "."
+    - string array [s1,s3]
+    - strlength(s1)
+
+## 符号计算
+- 定义变量
+- syms arg1 arg2 real/positive（后面的类型可选）不用加分号
+- 相当于把arg的变量赋给名为arg的变量
+- 这种命令方式相当于把后面的参数当做字符型传入后面的函数。
+- =syms(’arg1’,’arg2’,’real’);
+- x1=sym(‘x1’);	a1=sym(sqrt(200));	v=sym([100,200]);
+- x1=sym(‘x1’,’real’);
+- 如果是字符串，则产生一个符号数或变量；
+- 如果是数值标量或数值矩阵，则其转为符号类型。
+- 和字符数组
+- 定义符号变量并存储到变量中，组成的表达式也在变量中，和字符数组没有关系！
+- Subs
+- subs(s, old, new)  替换表达式s中old符号变量为new（变量或数字）
+- 可以是向量：subs(f,[x,y],[1,2])  x,y为符号变量。
+- simplify
+- simplify(expr)  化简表达式
+- 求值
+- digits  digits(n)  显示、设置vpa计算结果的有效数字的位数
+- vpa(s)  vpa(s,n)  （采用n位有效数字计算精度）求s的数值结果（返回sym）↓
+- double(s)  char(s)  转换表达式s
+- compose
+- compose(f, g)返回复合函数f(g(y))，其中f=f(x),g=g(y). x和y分别为f、g中找到的符号变量
+- compose(f, g, z)返回复合函数f(g(z)),变量z代替上面变量y
+- compose(f, g, x, y, z)返回复合函数f(g(z)). 指定自变量x,y
+- limit
+- limit(f,x,a)计算f(x)在x趋于a的极限，返回符号型
+- limit(f,x,a,’left’)	limit(f,x,a,’right’)左右极限
+- diff
+- diff(f,x)对f(x)的x求1阶偏导
+- diff(f,x,n)求n阶导
+- int
+- int(expr,var)对var求不定积分
+- int(expr,var,a,b)从a到b的定积分，返回符号型。
+- taylor
+- taylor(f)计算f的5阶麦克劳林多项式
+- taylor(f,v,a)计算f对变量v在点a展开的麦克劳林多项式
+- taylor(f,v,a,Name,Value)指定属性：Name（字符串），Value值
+- taylor(expr,v,'expansionpoint',0,'order',8)8阶0点展开
+- solve
+- solve(a*x+b*y==10,a*x-b*y==20,x,y)解方程（组），表达式等式要有2个等号，后面指定求解变量并返回结构体变量，成员名即解的变量名。
+- dsolve
+- syms y(x)注意定义方式！
+- s=dsolve(diff(y,x,1)==y,y(0)==4,x)解微分方程，第二个为初始条件。
+ 
+## 线性代数,数据拟合
+- tri-u/p
+- triu(A) tril(A) 获得上三角、下三角阵（triangle upper/lower）
+- 解线性方程组
+- Ax=b：x=A\b或x=inv(A)*b
+- eig
+- eig(A) 获取特征值组成列向量
+- [P,]=eig(A) 为特征向量组成的对角矩阵，P的列向量是对应的特征向量组
+- A*P=P*；应用于矩阵求幂：A^n=P*.^n*inv(P)
+- P为正交矩阵时inv(P)=P’。
+- polyfit
+- p=polyfit(x,y,n) n次多项式线性拟合x,y数据点
+- p为幂次从高到低的多项式系数向量（n+1个元素的行向量，包括0次幂）
+- polyval
+- y=polyval(p,x) x在给定系数p的多项式的值
+- roots()求多项式的根
+
+ 
+## 数值微分,积分
+- 模型
+- 一阶常系数微分方程dy/dt=f(t,y)
+- y=y(t)未知函数
+- f(t,y)给定的二元函数
+- 初始条件y(t_0 )=y_0
+- Ode23（低阶）/ode45（高阶）
+- [T, Y] = ode23(@fun,Tspan,y0)
+- @fun为函数f(t,y)句柄（匿名函数不用@，函数文件的函数要加@）
+- 方程组时返回列向量，每一行一个变量f(t,y_n)，所以运算符用数组运算
+- 方程组不同的y_n用y(1),y(2)…表示
+- 表示法：
+- R=[…;…]
+- r(1,:)=…	r(2,:)=…
+- Tspan为求解区域，一般为[T0,Tn]表示两个端点。也可以用行向量具体指定。
+- y0初始条件，列向量表示方程组每个y0的数值
+- T为列向量，Tspan得到的自变量t的离散数据点
+- Y为数值解y的离散点，每一列对应于列向量T中的数值解，不同列对应方程组不同变量。
+- 高阶：方程组y(1)=y;y(2)=dy/dt
+- Euler法：（不讨论方程组即y(t_k )=y_k）
+- 泰勒公式y(t)=y(t_0 )+(t-t_0 ) y^' (t_0 )+(t-t_0 )^2/2 y^'' (t_0 )+⋯
+- 近似y(t)=y(t_0 )+(t-t_0 )f(t_0,y_0)
+- 迭代：y_(k+1)=y_k+hf(t_k,y_k)，其中h=∆t为定值
+- Quad：Simpson 积分法
+- quad(fun,a,b,tol) fun函数句柄，ab下限-上线，tol精度（可选）
+- dblquad矩形区域二重积分
+- dblquad(fun,a,b,c,d,tol) ab内限cd外限
+- quad2d：tiled 方法
+- quad2d(fun,a,b,c,d) ab外限cd内限，可为函数句柄
+- trapz：无具体表达式
+- trapz(x,y)x，y为向量数值
+- integral,integral2积分
+ 
+## 优化工具箱
+- 函数优化
+- fminunc( ) 多变量无约束
+- ga( )遗传算法
+- 求最大值
+- 函数*(-1)求最小值找到最小值点对应原函数最大值点
+- 求导（梯度下降法）
+- X_min/max=solve(diff(f,x))
+- fminbnd()单变量边界约束
+- [xmin,fmin]=fminbnd(fun,a,b)求最小值
+- a,b为区间，fun函数句柄
+- fminsearch()多变量无约束
+- x = fminsearch(fun,x0) 句柄函数x(1),x(2)
+- fmincon()多变量有约束
+- x = fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon)
+- nonlcon：非线性约束句柄
+- [c,ceq]=nonlcon(x) c(x)<=0;ceq(x)=0;没有约束用[]
+- linprog() 线性规划
+- [x,fval]=linprog(C,A,b,Aeq,Beq,Lb,Ub)求最小值
+- min┬ ⁡〖C^T X〗       s.t.  AX≤b,    A_eq X=b_eq,Lb≤X≤Ub
+- X,b,Lb,Ub为列向量
+- 求最大值：C-C带入函数；Aeq,Beq无约束：[]
+- fzero：求解非线性方程根
+- fzero(fun,x0)—x0为起始点
+- fsolve()解非线性方程（组）
+- x = fsolve(fun,x0)
+- 句柄函数function F=fun(x) F(1)=...x(1)...x(2)...
+- lsqcurvefit()非线性函数拟合
+- x = lsqcurvefit(fun,x0,xdata,ydata)
+- fun的参数为@(x,xdata)x(1)...x(2)...中x(1),x(2)为待求参数
+- xdata,ydata为数据集，x0为待求参数起始点，返回值x为带求参数向量即调用f(x,xdata)其中x为[x(1),x(2),...]
+ 
+## 随机变量模拟
+- rand()：(0,1)区间上均匀分布
+- randn()标准正态分布
+- exprand()指数分布
+- normrnd()正态分布
+- r = normrnd(mu,sigma,m,n)
+- (a,b)区间均匀分布：
+- a+(b-a)*rand(m, n)
+- unifrnd(a, b, m, n)
