@@ -1,11 +1,10 @@
 # Linux 笔记
 ## Content
 - [命令帮助](#命令帮助)
-- [目录](#目录)
+- [shell脚本](#shell脚本)
 - [文件](#文件)
 - [系统](#系统)
 - [vim](#vim)
-- [shell脚本](#shell脚本)
 
 ## 命令帮助
 
@@ -13,8 +12,7 @@
     Ctrl+Z 或 命令末尾加& 后台执行  
     Ctrl+U 清除行  
     Ctrl+L 清屏 或$clear  
-    Ctrl+S 挂起  
-    Ctrl+Q 解冻
+    Ctrl+R 反向搜索模式，找到过去使用的命令
 - `man cmd`查看帮助文档  
     `info cmd`详细说明
 - `tldr cmd` show examples better than 'man'
@@ -30,8 +28,9 @@
     `$SHELL` 查看默认sehll  
     `chsh -s /bin/zsh` 修改默认sehll
 - `xdg-open [doc]` open with default app
-- `find <dir> -name/iname 'name' -type f` 查找文件
-- `grep <pattern> <file>` 筛选所在行
+- `find <dir> -path <path> -name/iname 'name' -type f -exec rm {} \;` 查找文件
+- `grep -R <pattern> <file>` 筛选所在行
+    - `rg "pattern" -t py -C 5 <path>` 更好的展示
 
 参数用white space分隔
 ```bash
@@ -115,12 +114,12 @@ false # code=1
 
 特殊变量
 - `$`或`${}` 引用变量
-- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态 $_上个命令最后一个参数 $$程序PID $@所有的参数，用于for迭代`特殊变量
+- `$0脚本名 $1参数1 $#参数数量 $?上个命令退出状态 $_上个命令最后一个参数 $$程序PID $@所有的参数，用于for迭代 !!上次命令，包括参数`特殊变量
 - `sudo !!`再执行上一次命令
 - `${n1}${n2} 'a''b'` 直接拼接
 - 变量名大写
 - `foo=$(pwd)` 保存pwd命令输出结果为foo变量
-- `cat <(ls)` 将命令的输出临时保存为文件  
+- `cat <(ls)` 将命令的输出临时保存为文件并替代此位置  
     - `diff <(ls dir1) <(ls dir2)`
 
 转义
@@ -136,6 +135,7 @@ false # code=1
 
 条件判断  
 ```bash
+[[ $a -eq $b ]] # 比较建议用双括号
 # 数字比较 -ne -gt -lt -ge -le
 # 布尔：!:not -o:or -a:and
 # 逻辑： && ||
@@ -164,6 +164,7 @@ esac
 
 循环  
 ```bash
+# globbing
 convert snow.{jpg,png} = convert snow.jpg snow.png # shortcut
 touch foo{,1,2} = touch foo foo1 foo2
 touch proj{1,2}/src/test{1,2,3}.py # Cartesian product
@@ -183,12 +184,16 @@ done
 ```
 
 函数  
+function can change enviroment variables, while scripts can't.
+Scripts can only affect their processes. They need to use "export".  
 ```bash
 function fun(){
     mkdir -p "$1"
+    macro_path=$(pwd)
+    cd ${macro_path}
 }
 # 调用
-source a.sh
+source a.sh # only need to load once
 fun arg1 arg2
 ```
 
