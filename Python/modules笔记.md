@@ -156,6 +156,10 @@ from datetime import datetime
 str = datetime.now().strftime('%Y/%m/%d_%H:%M:%S')
 datetime.datetime.fromtimestamp(timestamp)
 str(timedelta(seconds=timestamp1-timestamp2)) # 时间换算
+
+from timeit import Timer
+t1 = Timer("test1()", "from __main__ import test1")
+print("concat", t1.timeit(number=1000), "milliseconds")
 ```
 
 ### termcolor
@@ -203,6 +207,27 @@ logging.exception(obj)
 
 
 ## 数据处理
+
+### configparser
+INI file-like
+
+```py
+import configparser
+config = configparser.ConfigParser()
+config['DEFAULT'] = {'ServerAliveInterval': '45',
+                     'Compression': 'yes',
+                     'CompressionLevel': '9'}
+config['forge.example'] = {}
+config['forge.example']['User'] = 'hg'
+with open('example.ini', 'w') as configfile:
+  config.write(configfile)
+
+config.read('example.ini')
+config.sections() # see parsed args
+# use like dict
+# manually converts datatype
+
+```
 
 ### json
 ```py
