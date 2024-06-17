@@ -188,7 +188,7 @@
 - tri-u/p
 - triu(A) tril(A) 获得上三角、下三角阵（triangle upper/lower）
 - 解线性方程组
-- Ax=b：x=A\b或x=inv(A)*b
+- Ax=b：x=A\b
 - eig
 - eig(A) 获取特征值组成列向量
 - [P,]=eig(A) 为特征向量组成的对角矩阵，P的列向量是对应的特征向量组
