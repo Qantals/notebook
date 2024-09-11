@@ -16,6 +16,7 @@
     - [json](#json)
     - [csv](#csv)
     - [pandas](#pandas)
+- [re](#re)
 - [multi_process](#multi_process)
 - [others](#others)
 
@@ -302,6 +303,12 @@ df = pd.read_csv("girl.csv", sep=',') # 返回DataFrame
 df.to_excel(path, sheet_name="data")
 ```
 
+## re
+```py
+import re
+line_words = re.split('=|#|\s', line)  # split the line into words with splitor '=', '#', and whitespaces(won't leave spliters)
+line_words = list(filter(None, line_words))  # filt out the whitespaces
+```
 
 ## multi_process
 ```py
@@ -342,6 +349,8 @@ nrmse_value = normalized_root_mse(img1.flatten(), img2.flatten(),normalization='
 # scipy
 from scipy.stats import wasserstein_distance # 概率分布距离
 from scipy.interpolate import make_interp_spline # b-spline插值
+import scipy.io as spio
+A = spio.loadmat('a.mat')['A'] # 加载matlab的.mat文件
 # mmcv(openMMlab机器视觉)
 from mmcv import scandir
 # scikit-learn(机器学习)

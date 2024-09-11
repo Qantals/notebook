@@ -191,7 +191,7 @@ tuple元组
         split(item[,limit])拆分为列表
         lower() upper() capitalize()
         replace(old,new[,limit]) new=''表示删除
-        endswith('.wav')结尾字符串
+        startswith() endswith('.wav')结尾字符串
 
 ## 其他结构
 
