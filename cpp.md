@@ -22,6 +22,9 @@
 ## common
 - `typedef type newname;`
 - `enum color { red, green=5, blue } c;`
+- cout格式化
+    - `cout << setw(2) << endl` 设置空格宽度
+    - `cout << fixed << setprecision(3) << float_num` 固定浮点数小数位
 - 结构体
     - `struct Books{char title[50];} book;`
     - `Books book1;`
@@ -156,6 +159,7 @@ virtual int area() = 0; // 纯虚函数，没有函数主体
 #include<iostream>
 #include<fstream>
 // 写
+ofstream outfile("abc.txt"); // 直接构造
 ofstream outfile;
 outfile.open("file.dat", ios::out | ios::trunc ); // 第二个参数可省略: trunc清除再写 ios::app追加
 // 读
