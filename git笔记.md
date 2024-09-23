@@ -30,6 +30,7 @@ Untracked, Staged, Unmodify, Modified # 后两个已commit
 git add <文件名> # 把untracked或modified改为Staged
 git add .
 git commit [-m] [-a] # -a 连带未暂存文件一起提交
+git reset --soft/hard HEAD^ # 撤销之前的commit soft保留更改 hard不保留
 
 git reset HEAD <文件名> # 取消暂存（仍然tracked）  
 git reset --hard <commit_id> # 工作区恢复到某个版本，<commit_id>可为 HEAD^^

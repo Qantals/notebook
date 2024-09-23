@@ -34,5 +34,11 @@ def draw(filename, smooth, fontsize):
 
 if __name__ == '__main__':
     draw(filename="run-log-tag-Train_lr.csv", smooth=0.60, fontsize=14)
-
+    '''
+    csv file like:
+    Wall time,Step,Value
+    1715620410.6522117,4,0.00019999973301310092
+    1715620463.252248,14,0.00019999631331302226
+    ...
+    '''
  
