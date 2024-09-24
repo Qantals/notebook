@@ -46,6 +46,8 @@ echo $PATH # separated by :
 which echo # find path in PATH
 PATH=$PATH:/... # 追加
 export PATH # 变为全局变量多用户使用
+/etc/profile.d/texlive2023.sh
+/etc/environment
 ```
 
 ls  
