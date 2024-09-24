@@ -94,6 +94,7 @@ homework:`curl --head --silent https://missing.csail.mit.edu | grep last-modifie
 ```sh
 export http_proxy="http://127.0.0.1:7890"
 export https_proxy="http://127.0.0.1:7890"
+unset http_proxy
 ```
 
 error code
