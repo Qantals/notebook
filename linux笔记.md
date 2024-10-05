@@ -216,7 +216,10 @@ fun arg1 arg2
     - `-f <name>` 指定档案文件名称，用.tar/.tar.gz结尾
     - `-z`.gz  `j`.bz2 `J`.xz
     - `-C <dir>` 解压到指定目录
-`gzip -dk` -d解压.gz -k不删除原文件
+`gzip`
+    - `gzip -d` 解压，`-k`保留原文件
+    - `gzip -c abc.txt > abc.txt.gz` 压缩并保留原文件
+    - `gunzip -c abc.txt.gz > abc.txt` 解压并保留原文件
 `ln [-s] f1 f2` f2硬（软）链接到f1
 
 ## 系统
