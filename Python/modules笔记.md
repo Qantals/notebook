@@ -53,9 +53,11 @@ if args.mode == 'add': add(args) # 2
 
 ### os
 ```py
-os.getcwd() # 当前终端路径
-# __file__ py文件路径=终端路径+运行解释器输入的路径
-# sys.path[0] 运行py文件所在目录
+# python中脚本内的路径以终端的工作目录为基础！
+# 如save到'./'下，不保存到脚本所在路径，而是工作目录下！
+os.getcwd() # 当前终端路径--工作目录
+script_dir = os.path.dirname(os.path.abspath(__file__)) # __file__=脚本文件路径=终端路径+运行解释器输入的路径
+# sys.path[0] 运行py文件所在目录，不建议
 os.chdir(path) # 修改路径
 list=os.listdir(path) # 目录内容，包括文件夹
 os.path.exists(path)
