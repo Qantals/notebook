@@ -258,11 +258,11 @@ import csv
 with open('test1.csv','rt') as f:
     cr = csv.reader(f)
     cr = csv.DictReader(f)
-    cr.fieldnames # 表头
+    cr.fieldnames # 表头,DictReaderd才有
     for row in cr: # 返回row为list/dict
 with open('1.csv','wt') as f2:
     # list
-    cw = csv.writer(f2,delimiter=',',)
+    cw = csv.writer(f2,delimiter=',')
     cw.writerows(list) # 将嵌套列表内容写入
     for item in list:
         cw.writerow(item) # 写到csv文件的一行
