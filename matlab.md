@@ -1,8 +1,7 @@
 # MATLAB
 
 ## TOC
-- [基础](#基础)
-- [基本语法](#基本语法)
+- [basis](#basis)
 - [绘图函数](#绘图函数)
 - [字符串](#字符串)
 - [符号计算](#符号计算)
@@ -11,105 +10,94 @@
 - [优化工具箱](#优化工具箱)
 - [随机变量模拟](#随机变量模拟)
 
-## 基础
+## basis
 - basis
-    - F5执行程序
-    - clear A B  清除变量A、B 
-    - clear  清除工作空间变量
-    - clc  清除命令窗口内容
-    - who  查看工作空间所有变量
-    - whos a b  查看变量信息
-    - class("var")   返回变量类型显示为char型数组
-    - save("results.mat", "var_G", "var_C");
-    - %行注释
-- 常见函数
-    - x=a:step:b  构造行向量-等差数列（包含ab）step省略默认1。如果最后一个数超过b，则舍弃这个数（数列不会有超过b的数）
-    - linspace(a,b,n)  包含ab，分为n-1个区间（n个数）均匀节点
-    - a=fix(10\*rand(m,n))
-    - det(A) 求行列式 rank()求矩阵的秩
-    - factorial(n)  power()指数 pow2()2 的幂
-    - norm(n) 求范数 std()求标准差
-    - conj()共轭负数 real() imag() 取实部虚部
-- 索引
-    - 索引>=1不可越界，end表示最后（最后一行/列，线性索引-最后元素）
-    - 线性索引：单下标表示，向下遍历每一列
-    - 逻辑下标：取出logical数组内值为1的下标为原数组下标对应值，如：x(x>1)==x(find(x>1))取出x内所有大于1的值。
-    - A(r,:)第r行  A(:,c)第c列
-    - 指定子阵：A(行下标集，列下标集)下标集用另一个数组表示,数字不连续就是重新排列
-    - A(:)所有元素重新排列成列向量（先按列即线性索引）
-    - A(下标集)取出第几个元素（先按列）
-- 运算符
-    - A.’矩阵转置  A’矩阵共轭转置
-    - A\B矩阵左除（A^{-1}B）  A/B矩阵右除（AB^{-1}）（有时A为标量，B为矩阵也不行）
-    - A^n矩阵幂
-    - inv(A)求矩阵逆
-    - 数组运算符：（对应元素运算，A、B同维数或其一为标量）
-    - 关系运算符：~=不等与。成立值为1，不成立值为0。数组比较的是每个元素，结果为一个同维logical数组。
-    - 逻辑运算符：& | ~。0为假，1为真。
-- 数据结构
+    ```matlab
+    % F5执行程序
+    clear  clear a b   clc
+    who   whos a b 显示size  class(var)
+    save("results.mat", "var_G", "var_C");
+    help funname
+    pause(seconds)
+    % 长语句末尾...后换行
+    ```
+- control structure
+    ```matlab
+    if 逻辑表达式1  语句块1 elseif else end
+    switch switch_expr（一般为标量或字符串）
+        case case_expr,  语句块1
+        case {case_expr1, case_expr2, case_expr3,...},  语句块2
+        otherwise,  语句块3
+    end
+    for x=[1,3,5,4] 语句块 end
+    while 逻辑表达式  循环语句块  end
+    ```
+- useful functions
+    ```matlab
+    zeros(m,n)   ones(m,n)   eye(m,n)   rand(m,n)
+    x=a:step:b % 包含ab,step省略默认1。不会有超过b的数
+    linspace(a,b,n)  包含ab，分为n个数
+    a=fix(10*rand(m,n))
+    factorial(n)  power() pow2()
+    conj()   real() imag()
+
+    % string
+    input('please input','s') % 返回char
+    disp(var) % 显示变量内容而不显示变量名，自动换行。
+    fprintf(formatSpec,A1,A2…);
+
+    % statistics
+    sum/mean(A,1) % 列求和
+    sum/mean(A,2) % 行求和
+    [value,index]=max(x) 
+    diag(A) % 取对角为向量/构造对角阵
+    length(x)  各维度长度最大值   size(x)  各维度长度
+    [sorted, index]=sort(a,’descend’) % index=sorted在a中对应数的下标
+    idx=find(A) % 查找非零元素，返回线性索引
+    ```
+- index
+    ```matlab
+    a = [1,2,3;4,5,6]   a = [1 2 3; 4 5 6]
+    % >=1，end表示最后
+    x(x>1)==x(find(x>1)) % 逻辑下标：logic数组作为下标，提取下标为非0的元素：
+    A(r,:)  A(:,c)
+    A([3,4,6]，[1,3,2])
+    A([1,3,2]) A(:) % 线性索引：单下标列主序
+    ```
+- operators
+    ```matlab
+    A.’transpose  A’矩阵共轭转置
+    A\B（A^{-1}B）  A/B   A^n   inv(A)   det(A)   rank(A)   norm(A,p)   [V,D]=eig(A)
+    % element-wise加.
+    % 关系运算符：~=不等与   True=1, False=0   数组比较的是每个元素，结果为一个同维logical数组。
+    % 逻辑运算符：& | ~   True=1, False=0
+    ```
+- data structure
+    - `a = 'abc'   a = "abc"` character array / string
+    - `a = 2+3i` i = imaginary unit
     - Cell 元素可以是不同类型 a=cell(m,n) 存取数组元素a{i,j} 
     - Struct 直接F.first=…
-- 其他
-    - 舍小数
-        - mod(a,b) 求模结果向-inf舍去  rem(a,b) 求余结果向0舍去
-        - floor(x)向-inf  fix(x)向0  ceil(x)向+inf round(x)四舍五入
-    - 指数 men=m*10^n或同C语言：3.5e7
-    - format long/short 更改命令行显示格式
-        - Format 恢复默认
-    - +eps  浮点精度值，加在除数防止除0
-    - 长语句 使用省略号（三个句点）...，后跟 Return 或 Enter 以指示该语句在下一行继续。
-    - 函数句柄
-        - 函数句柄通常在参数列表中传递给其他函数，然后，其他函数可以使用该句柄执行或计算相应函数。
-        - @ 在函数名称前面构造函数句柄
-        - 通过函数句柄来调用函数和一般一样
-
-
- 
-## 基本语法
-- input(‘提示信息字符串’,’s’)  返回值为字符数组
-- disp(变量名)  显示变量内容而不显示变量名，自动换行。
-- fprintf(formatSpec,A1,A2…);
-- sum/mean(A,1)  求列返回行向量（优先处理列）
-- sum/mean(A,2)  求行返回列向量
-- [V,I]=max(x) 
-    - 向量：V为最大值，I为下标；
-    - 矩阵：V求列返回行向量，I行下标的行向量。
-- diag(A) 获取对角元素为列向量或组合成对角元素的矩阵
-- diag(diag(A)) 组合对角元素成对角阵
-- length(x)  向量：元素个数；矩阵：行数和列数的最大值
-- size(x)  行数、列数组成的向量
-- [B, I]=sort(a,’descend’)
-    - B为按递增排序后的元素
-    - I为排序后数组B中的元素在原数组v中的位置下标
-- idx=find(A)  查找非零元素
-    - 矩阵：返回非零值的下标组成列向量（线性索引）
-    - 向量：方向一致的下标向量
-- 选择、循环结构
-    - if 逻辑表达式1  语句块1 elseif else end
-    - switch switch_expr（一般为标量或字符串）
-    - case case_expr,  语句块1
-    - case {case_expr1, case_expr2, case_expr3,...},  语句块2
-    - otherwise,  语句块3
-    - end
-    - for 变量=初值:步长:终值  语句块  end
-    - for x=array按数组（array）中的每一列执行一次，x被指定为数组的下一列
-    - while 逻辑表达式  循环语句块  end
-- 函数编程：
-    - 脚本文件：不含函数定义，脚本程序中的变量在脚本执行完后仍然保留在工作空间中，并能被其它脚本程序所使用（对应函数变量-局部变量不留）。
-    - addpath('E:\mywork')
-    - path('E:\mywork', path)
-    - function [r1, r2, r3]＝funname(a1, a2, a3, a4)
-        - help 函数名 检查该函数是否为系统函数
-        - nargin，nargout输入参数个数，输出参数个数
-    - pause(n) 暂停n秒
-    - 文件名一般与程序中定义的主函数名相同；否则，调用该函数时以保存函数的文件名作为函数名来调用。
-    - 一个函数文件中的第一个函数是主函数，后面定义的其他函数称为子函数。
-    - 子函数只能被所在的函数程序文件中的其他函数调用。
-    - 子函数不能调用主函数。
-    - f(1:3,5:7)表示传入多个点(1,5)(2,6)(3,7)给f(x,y)
-    - 要计算多个点的函数值时，注意四种数组运算符的使用
-    - 匿名函数 f=@(x,y)((x.^2+y.^2<=1).*(x+y)+(x.^2+y.^2>1).*(x-y));
-    - ignore some outputs[~,~,ext] = fileparts(helpFile);
+- others
+    ```matlab
+    mod(a,b)求余结果向-inf舍去   rem(a,b)向0舍去
+    floor(x)向-inf   fix(x)向0   ceil(x)向+inf   round(x)四舍五入
+    3.5e7   3.5*10^7 指数
+    format long/short/loge e/short e 单精度/双精度位数显示   Format 恢复默认
+    +eps  加在除数防止除0
+    % 函数句柄:作为参数传递给其他函数，在函数前加@
+    ```
+- functions
+    ```matlab
+    % 脚本文件执行完后仍然保留在工作空间中
+    addpath('E:\mywork')
+    function [r1, r2, r3]＝funname(a1, a2, a3, a4)
+    nargin，nargout % 输入参数个数，输出参数个数
+    % 调用函数以文件名为准
+    % 一个主函数，其他为子函数
+    f(1:2,5:7) == f(1,5), f(2,7)
+    f=@(x,y)(x+y) % 匿名函数
+    [~,~,ext] = fun(...) % 忽略返回值
+    ```
  
 ## 绘图函数
 - hold on / hold off
