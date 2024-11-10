@@ -1,5 +1,8 @@
 # types of matrices (L3, L4)
 
+## diagonal matrix
+- $A=\mathrm{diag}(a_1,\dots ,a_n),B=\mathrm{diag}(b_1,\dots ,b_n)\to AB=\mathrm{diag}(a_1b_1,\dots ,a_nb_n)$
+
 ## inverse matrix
 - $AA^{-1}=I=A^{-1}A$
 - not invertable:

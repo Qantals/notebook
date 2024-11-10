@@ -6,7 +6,6 @@
 - row picture: draw two lines and get the cross point solution
 - column picture: $x_1\times a_1 + x_2\times a_2=\vec{b}$, where $a_i$ is column vector of $A$.
 - column picture is better in high dimension.
-
 - linear mapping: $Ax=y=f(x)$ see vector $x$ is mapped to $y$ through $A$.
     - see eigenvectors.
     - map a line to a line for $A_{2\times 2}$ condition.
