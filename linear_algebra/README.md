@@ -1,1 +1,0 @@
-This is notebook of MIT 18.06

@@ -30,7 +30,7 @@
 
 ## symmetric matrix
 - $A=A^T$
-- $A^TA$ is symmetric matrix.
+- $A^TA$ is symmetric matrix. (also for $AA^T$)
     > proof: $(A^TA)^T=A^T(A^T)^T=A^TA$
 - $A^T=A, B^T=B, AB=BA \to (AB)^T=AB$ otherwise $AB\ne BA\to (AB)^T\ne AB$
     > proof: $(AB)^T=B^TA^T=BA =\text{or}\ne AB$

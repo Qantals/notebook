@@ -1,4 +1,4 @@
-# practice (L11, L12)
+# examples (L11, L12, L13)
 
 ## matrix space (see matrix as vectors)
 - subspace $M_{3\times 3}$, $\dim M=9$
@@ -31,13 +31,19 @@
 - kirchhoff's current law: $f=A^Ty_{m\times 1}=0$ ($f$ is external current source)
     - for each row of $A^T$: same node iterates all edges, negitive sign means leaving out the node.
     - $y_{m\times 1}=Ce_{m\times 1}$ is current (Ohm's law, $C$ is conductance, scalar)
-    - $N(A^T)$: all loops / meshes with their edges $y$
-        - some components in $y$ may be zero because that edge doesn't pass that loop.
-        - $\dim N(A^T)=m-r=m-n+1$
-        - basis of $N(A^T)$: # all smallest loops
+    - $N(A^T)$: all possible loops / meshes current for $f=0$.
+        - $\dim N(A^T)=m-r=m-n+1$: # all smallest loops
+        - basis of $N(A^T)$: current of the smallest loop (components of the current vector don't cross that loop is 0, others are 1 or -1 means right / reverse direction of settings in $A$. As a result you can see current of loop meets KCL).
 - total equation: $A^TCAx=f$
 - Eluer's formula (any graph has this property)
     - $\dim N(A^T)=m-r=m-n+1$
     - $\Leftrightarrow\#\text{loops}=\#\text{edges}-(\#\text{nodes}-1)$
     - $\Leftrightarrow\#\text{nodes}-\#\text{edges}+\#\text{loops}=1$
 - tree: graph without loop (independent). Get it by choosing pivot columns from $A^T$.
+
+## review / thinking (L13)
+- $A^2=0$ but $A\ne 0$: $A=\begin{bmatrix}0 & 1 \\ 0 & 0\end{bmatrix}$
+- $N(CD)=N(D)$ where $C$ is invertable.
+    > proof: row operation doesn't change solution of $Ax=b$.
+- for square matrix, row space may not equal to column space. e.g. $A=\begin{bmatrix} 0 & 1 \\ 0 & 0\end{bmatrix}$
+- if $A,B$ are the same in four fundamental space, $A\ne kB$ is possible: $A,B$ are invertable.
