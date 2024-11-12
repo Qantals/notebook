@@ -23,6 +23,3 @@
     - $x^TA=b^T$ expand $x^T$ and $b^T$ in column direction
     - $C_{ij}=A_{i:}^T B_{:j}$
     - ** $C=A_{:1}B_{1:}+\dots$ is column vector multiply row vector.
-
-
-

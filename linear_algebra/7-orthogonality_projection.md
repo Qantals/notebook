@@ -40,7 +40,7 @@
         > note: $e\perp C(A)\Leftrightarrow A^TAx=A^Tb$ is least squares
     - projection matrix: $p=A\hat{x}=A(A^TA)^{-1}A^Tb=Pb$
 - properities of projection matrix
-    - $P_{m\times m}=I$ if $A$ is invertable (if $A$ is square matrix, $A$ is invertable from definition)
+    - $A$ is square matrix $\Rightarrow A$ is invertable (because $A$ is composed of basis) $\Rightarrow P_{m\times m}=I$
     - $P^T=P$
     - $P^2=P$
     - $b\in C(A)\Rightarrow Pb=b$
@@ -54,3 +54,21 @@
     - $e=b-p=b-Pb=(I-P)b$, project $b$ to $e$
     - $C(I-P)\perp C(P)$
         > proof: $(I-P)^TP=0$
+
+## orthonormal vectors
+- orthonormal: $A=I$ columns are independent, perpendicular and unit vectors
+    - $Q=[q_1,\dots ,q_n],Q^TQ=I$
+    - **but $Q$ is square matrix** $\Rightarrow Q^T=Q^{-1}\Rightarrow QQ^T=I$
+- projection matrix
+    - $P=Q(Q^TQ)^{-1}Q^T=QQ^T$, $Q$ is square $\Rightarrow P=I$.
+    - $P^2=P=(QQ^T)(QQ^T)=Q(Q^TQ)Q^T=QQ^T$
+- normal equation: $Q^TQ\hat{x}=Q^Tb\to \hat{x}=Q^Tb\to \hat{x_i}=q_i^Tb$ is easy to compute.
+- hadamard matrix: a square matrix whose elements are +1 or -1, and $HH^T=mI$ where $m$ is dimension.
+- Gram-Schmidt: get orthonormal columns by doing projection.
+    - $b,a$ are independent vectors, project $b$ to $\beta$ so that $\beta \perp \alpha$.
+    - $\beta=b-\frac{\alpha^Tb}{\alpha^T\alpha}\alpha,q_1=\frac{\alpha}{\left \| \alpha \right \|},q_2=\frac{\beta}{\left \| \beta \right \|}$ (doing normalization at final step)
+        > proof: $\alpha ^T\beta =\alpha ^Tb-\alpha ^Tb=0$
+    - $\gamma =c-\frac{\alpha ^Tc}{\alpha ^T\alpha}\alpha-\frac{\beta ^Tc}{\beta ^T\beta }\beta, q_3=\frac{\gamma}{\left \| \gamma \right \|}$
+- decomposition $A=QR$: $Q^TA=Q^TQR=R=\begin{bmatrix} a_1^Tq_1 & a_2^Tq_1 \\ a_1^Tq_2 & a_2^Tq_2 \end{bmatrix}$.
+    - $a_i^Tq_j=0(i<j)$
+    - $R$ is easy to compute due to conclusion $x_i=q_i^Ta_j$ above.

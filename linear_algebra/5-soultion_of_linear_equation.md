@@ -33,4 +33,3 @@
     - conclusion
         1. $r=m$ must have solution ($b$ must be in $C(A)\Leftrightarrow \mathbf{rank([A|b])=rank(A)}$), $r<m$ depends on $b$
         3. Number of solutions depends on null space (if there is free variables)
-

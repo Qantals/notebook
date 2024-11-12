@@ -26,9 +26,9 @@
         > illustration: $PAQ=\begin{bmatrix} I_r & O \\ O & O \end{bmatrix}$
 - $rank(A)=rank(A^T)$ 行秩等于列秩
     > proof1: through original defination, check determinant of all sub-matrices to get maximum size is $r$. And $\det A=\det A^T$.  
-    > proof2: using block matrices, $A_{m\times n}=(\alpha ^T_1,\dots ,\alpha ^T_m)=(\beta _1,\dots ,\beta _n)$ composed of independent vectors $(\alpha '^T_1,\dots ,\alpha '^T_s),(\beta '_1,\dots ,\beta '_r)$  
+    > proof2: using block matrices, $A_{m\times n}=(\alpha ^T_1,\dots ,\alpha ^T_m)^T=(\beta _1,\dots ,\beta _n)$ composed of independent vectors $(\alpha '^T_1,\dots ,\alpha '^T_s)^T,(\beta '_1,\dots ,\beta '_r)$  
     > where $r$ is column rank, $s$ is row rank;  
-    > so $A_{m\times n}=(\alpha ^T_1,\dots ,\alpha ^T_m)=P_{m\times s}A'_{s\times n}\to r\le s$ from the prespective of columns of $P$  
+    > so $A_{m\times n}=(\alpha ^T_1,\dots ,\alpha ^T_m)^T=P_{m\times s}A'_{s\times n}\to r\le s$ from the prespective of columns of $P$  
     > similarly, $A_{m\times n}=A'_{m\times r}P_{r\times n}\to s\le r$ so $r=s$.
 - $rank(AB)\le \min\{rank(A), rank(B)\}$
     > proof: for $C=AB\to C$ is linear representation of $A\to rank(C)\le rank(A)$, and $rank(C)=rank(C^T)=rank(B^TA^T)\le rank(B^T)=rank(B)$

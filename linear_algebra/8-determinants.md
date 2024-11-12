@@ -1,4 +1,4 @@
-# determinants
+# determinants (L18 ~ L20)
 
 ## definition
 - properities(1~3 are base):
