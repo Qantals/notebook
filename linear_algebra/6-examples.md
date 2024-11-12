@@ -13,11 +13,11 @@
 - construction: $\mathrm{rank}=4$ matrix is linear combination of some $\mathrm{rank}=1$ matrices.
 - same rank matrices:
     - suppose $M$ is rank 4 metrices of all $5\times 17$ metrices
-    - $\to M$ is not a subset (not closure): $rank(A+B)\le rank(A)+rank(B)$
+    - $\to M$ is not a subset (not closure): $R(A+B)\le R(A)+R(B)$
 - transformation using $Ax=0$:
     - suppose $S=\{\vec{v}_{4\times 1}|v_1+v_2+v_3+v_4=0\}$, is $S$ a space?
     - $A_{1\times 4}=[1\ 1\ 1\ 1]\to S=N(A)$
-    - $rank(A)=1,\dim N(A)=n-r=3$
+    - $R(A)=1,\dim N(A)=n-r=3$
     - $C(A)=\mathbb{R^1},N(A^T)=\vec{0}, \dim N(A^T)=m-r=0$
 
 ## graphs & networks
@@ -26,7 +26,7 @@
     - $\vec{x}_{n\times 1}=(x_1,x_2,x_3,x_4)^T$ is potential at node (电势), $e$ is potential difference (电势差)
     - $e_{m\times 1}=Ax=(x_i-x_j,\dots)^T$
         - $\dim N(A)=1$: if $e=0\to x=(1,\dots ,1)^T$ is homogeneous solution.
-        - $rank(A)=n-1$: set one node as ground ($x_1=0$), other nodes (columns) are independent.
+        - $R(A)=n-1$: set one node as ground ($x_1=0$), other nodes (columns) are independent.
         - loop: dependent edges (rows) compose loop, independent ones compose tree.
 - kirchhoff's current law: $f=A^Ty_{m\times 1}=0$ ($f$ is external current source)
     - for each row of $A^T$: same node iterates all edges, negitive sign means leaving out the node.

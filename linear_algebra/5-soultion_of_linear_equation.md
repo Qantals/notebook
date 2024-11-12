@@ -31,5 +31,5 @@
         - $R=\begin{bmatrix}I & F \\ 0 & 0\end{bmatrix}\to \dim N(A)=(n-r)$
         - has 0 / $\infty$ solutions.
     - conclusion
-        1. $r=m$ must have solution ($b$ must be in $C(A)\Leftrightarrow \mathbf{rank([A|b])=rank(A)}$), $r<m$ depends on $b$
+        1. $r=m$ must have solution ($b$ must be in $C(A)\Leftrightarrow \mathbf{R([A|b])=R(A)}$), $r<m$ depends on $b$
         3. Number of solutions depends on null space (if there is free variables)

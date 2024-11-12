@@ -18,9 +18,9 @@
     - $A^TA=(A^TA)^T$
     - $N(A^TA)=N(A)$
         > proof: $Ax=0\to A^TAx=A^T0=0, A^TAx=0\to x^TA^TAx=0=(Ax)^TAx=\left \| Ax \right \|^2\to Ax=0$
-    - $rank(A^TA)=rank(A)$
-        > proof: from 1: $\dim N(A)=\dim N(A^TA)\to n-rank(A)=n-rank(A^TA)$
-    - $rank(A)=n\to A^TA$ is invertable
+    - $R(A^TA)=R(A)$
+        > proof: from 1: $\dim N(A)=\dim N(A^TA)\to n-R(A)=n-R(A^TA)$
+    - $R(A)=n\to A^TA$ is invertable
     - $A^TA$ is positive semidefinite matrix
         > proof: $x^TA^TAx=(Ax)^TAx=\left \| Ax \right \|\ge 0$
 
@@ -30,9 +30,6 @@
     - projcetion direction: $\vec{e}=(\vec{b}-\vec{p})\perp \vec{a}$
     - cofficient $x$: $a^T(b-xa)=0\to x=\frac{a^Tb}{a^Ta}$
     - projection matrix: $p=a\frac{a^Tb}{a^Ta}=Pb\to P=\frac{aa^T}{a^Ta}$ is matrix.
-- properties of projection matrix:
-    - $C(P)$ is a line through $a$, $rank(P)=1$.
-    - $P^T=P$ ($aa^T$ is symmetric), $P^2=P$
 - two dimension (matrix): project $b$ to plane $C(A)$
     - projection vector $p=A\hat{x}$
     - projection direction: $e=b-A\hat{x}\perp C(A)$
@@ -47,7 +44,7 @@
         > proof: substitude $b$ with $Ax=b$ in expression of $Pb$
     - $b\perp C(A)\Rightarrow Pb=0$ ($b\in N(A^T)$)
         > proof: substitude $b$ with $A^Tb=0$ in expression of $Pb$
-    - $C(P)=C(A)$, so $rank(P)=rank(A)$
+    - $C(P)=C(A)\to R(P)=R(A)$
         > proof: $PA=A$
 - least squares: $Ax=b\to A\hat{x}=p$ instead, project $b$ to $p\in C(A),e=(b-p)\perp C(A)$ orthogonality results in smallest $\left \| e \right \|$.
 - another projection matrix $(I-P)$
@@ -55,7 +52,7 @@
     - $C(I-P)\perp C(P)$
         > proof: $(I-P)^TP=0$
 
-## orthonormal vectors
+## orthonormal matrices
 - orthonormal: $A=I$ columns are independent, perpendicular and unit vectors
     - $Q=[q_1,\dots ,q_n],Q^TQ=I$
     - **but $Q$ is square matrix** $\Rightarrow Q^T=Q^{-1}\Rightarrow QQ^T=I$

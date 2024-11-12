@@ -11,7 +11,7 @@
     5. holds invarient when $E_{ij}(c)=1$ (proof: from property 4 and 3)
     6. row of zeros lead to $\det =0$ (proof: from property 3)
     7. $\det A = \det U=d_1d_2\dots d_n$ where $d_n$ are diagonals, $U$ is upper triangle matrix. (proof: from property 5 using Gauss-Jordan elimination $A\to U$ , then use property 1 and 3 extract $k$ from all rows)
-    8. $\det A=0$ when A is singular (proof: elimination and row of zeros), $\det A\ne 0$ when A is invertable.
+    8. $\det A=0\Leftrightarrow$ A is singular (proof: elimination and row of zeros), $\det A\ne 0\Leftrightarrow$ A is invertable.
     9. $\det AB=(\det A)(\det B)$ (proof: if any one is singular, then through elimination $AB\to U$ contains row of zeros so $\det =0$; otherwise $A,B$ are split into product of elementary matrices, which has this property $\det E_1A=\det E_1 \det A$ known from property 2, 3, 5)
         - $\det A^{-1}=(\det A)^{-1}$
         - $\det A^2=(\det A)^2$
@@ -28,7 +28,7 @@
                 > proof:  
                 > 1. When exchange between two near numbers, the inversion number $\pm 1$ so it changes parity;  
                 > 2. When exchange between two far numbers including $m$ numbers in the middle, it need $2m+1$ (this is odd so changes parity, otherwise holds parity) near number changes where $a\to b$ needs $m+1$ then $b\to a$ needs $m$, so inversion number changes parity.
-- cofactors 代数余子式 of $a_{ij}\to C_{ij}=(-1)^{i+j} \det$ (n-1)-order matrix without row $i$ and col $j$.
+- cofactors (代数余子式) of $a_{ij}\to C_{ij}=(-1)^{i+j} \det$ (n-1)-order matrix without row $i$ and col $j$.
 - cofactor formula: along any row or any column (becasue $\det A=\det A^T$).
     - Laplace expansion: choose any $k$ rows, the determinant equals to all sub-matrices (square matrices) with these $k$ rows (amount is $C_n^k$) multiply their cofactors dividely (sign depends on summation of chosen sub-matrices' rows and columns).
     - This is convenient for block matrices computation: $A=\begin{bmatrix} B_{m\times m} & * \\ O & C_{n\times n}\end{bmatrix},\det A=\det B \det C$ where $A$ is not diagonal matrix but block matrix is.
@@ -46,11 +46,11 @@
 - inverse formula: $A^{-1}=\frac{1}{\det A}C^T$ where $C$ is cofactor matrix(conmosed of $C_{ij}$), but $C^T=A^*$ is adjugate matrix 伴随矩阵.
     > proof: $AC^T=AA^*=(\det A)I$ where transpose make it easy to compute matrix multiplication.  
     > Elements 1 mean computes $\det A$, and elements 0 mean computing determinants of singular matrix (proof: calculate determinant of matrix with same row is zero)
-- $rank(A^*)=\begin{cases} n & rank(A)=n \\ 1 & rank(A)=n-1 \\ 0 & rank(A)<n-1\end{cases}$
+- $R(A^*)=\begin{cases} n & R(A)=n \\ 1 & R(A)=n-1 \\ 0 & R(A)<n-1\end{cases}$
     > proof:
-    > 1. $rank(A)=n,\det AA^*=\det A\det A^*=\det (\det A)I=(\det A)^n\ne 0,\det A\ne 0\to \det A^*\ne 0$
-    > 2. $rank(A)<n-1$, from definition $\det C_{ij}=0\to A^*=0$
-    > 3. $rank(A)=n-1,\det A=0\to AA^*=(\det A)I=0\to rank(A)+rank(A^*)=n-1+rank(A^*)\le n\to rank(A^*)\le 1$, but $rank(A)=n-1\to \exists C_{ij}\ne 0\to rank(A^*)>0\to rank(A^*)=1$
+    > 1. $R(A)=n,\det AA^*=\det A\det A^*=\det (\det A)I=(\det A)^n\ne 0,\det A\ne 0\to \det A^*\ne 0$
+    > 2. $R(A)<n-1$, from definition $\det C_{ij}=0\to A^*=0$
+    > 3. $R(A)=n-1,\det A=0\to AA^*=(\det A)I=0\to R(A)+R(A^*)=n-1+R(A^*)\le n\to R(A^*)\le 1$, but $R(A)=n-1\to \exists C_{ij}\ne 0\to R(A^*)>0\to R(A^*)=1$
 - $Ax=b,x=A^{-1}b=\frac{1}{\det A}C^Tb\to x_j=\frac{\det B_j}{\det A}$
 - $B_j=[b\text{(the j-th column)},\ A\text{(without j-th column)}]$
     > proof: expand $\det B_j$ with column $j$: row $j$ of $C^T$ means column $j$ of $C$, then replace $A_{\_ j}$ with $b$

@@ -51,10 +51,19 @@
     - Multiplication of any two matrices from this group still in this group (closure).
 
 ## relationships of matrices
-- equivalent: $A_{m\times n}\cong B_{m\times n}$
-    1. means $A$ can be transformed to $B$ with elementary operation, i.e. $A=PBQ$ where $P$ and $Q$ is product of elementary matrices.
-    2. requires $rank(A)=rank(B)$
+- all have properties:
+    1. reflexivity: $A\cong A$
+    2. symmetry: $A\cong B\Rightarrow B\cong A$
+    3. transitivity: $A\cong B,B\cong C\Rightarrow A\cong C$
+- equivalent: $A_{m\times n}\cong B_{m\times n}\Leftrightarrow A=PBQ$ where $P$ and $Q$ is invertable.
+    - $\Leftrightarrow R(A)=R(B)$
+        > proof: equivalent means $B$ can be transformed to $A$ through elementary row and column operation $\to A,B$ has same reduced echelon form.
 - contract: $A=P^TBP$ where $A,B$ are square matrices, and $P$ is invertable.
     - requires rank and positive / negative inertia index are equivalent.
-- similarity: $A=P^{-1}BP$ where $A,B$ are square matrices, and $P$ is invertable.
+- similarity: $A_{n\times n}\sim B_{n\times n}\Leftrightarrow A=P^{-1}BP$ where $A,B$ are square matrices, and $P$ is invertable.
+    > prove transitivity: $B=P^{-1}AP\to C=Q^{-1}BQ=Q^{-1}P^{-1}APQ=(PQ)^{-1}A(PQ)$
+    - $\Rightarrow A\cong B\Rightarrow R(A)=R(B)$
+    - $\Rightarrow \lambda _{A}=\lambda _{B}$
+        > proof: $\det (\lambda I-B)=\det (\lambda I-P^{-1}AP)=\det (P^{-1}(\lambda I-A)P)=\det P^{-1}\det (\lambda I-A)\det P=\det (\lambda I-A)$
+        - $\Leftarrow$
     - requires rank, inertia index and eigen values are equivalent.
