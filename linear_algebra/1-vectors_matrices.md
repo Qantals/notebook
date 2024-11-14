@@ -13,13 +13,15 @@
 
 ## matrix multiplication
 - $Ax=b$ 右乘列
-    1. $b$ is linear combination of column vectors of $A$, $x$ is cofficient vector.
-    2. $b_i=a_i^Tx_i$ is inner product, where $a_i$ is column vector of $A$.
+    1. $b$ is **linear combination** of column vectors of $A$, $x$ is cofficient vector.
+    2. $b_i=a_ix$ is many **inner products**, where $a_i$ is row vector of $A$.
 - $x^TA=b^T$ 左乘行
     1. $b^T$ is linear combination of row vectors of $A$
     2. ...
 - $AB=C$
     - $Ax=b$ expand $x$ and $b$ in row direction
     - $x^TA=b^T$ expand $x^T$ and $b^T$ in column direction
-    - $C_{ij}=A_{i:}^T B_{:j}$
-    - ** $C=A_{:1}B_{1:}+\dots$ is column vector multiply row vector.
+    - ~ is group of linear combination results
+    - ~ is group of inner product between $A$ row vector set and $B$ column vector set.
+    - $C_{ij}=\sum _ka_{ik}b_{kj}$
+    - ** $C=\sum _kA_{k1}B_{1k}+\dots$ is column vector multiply row vector.
