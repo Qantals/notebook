@@ -32,7 +32,7 @@
 - cofactor formula: along any row or any column (becasue $\det A=\det A^T$).
     - Laplace expansion: choose any $k$ rows, the determinant equals to all sub-matrices (square matrices) with these $k$ rows (amount is $C_n^k$) multiply their cofactors dividely (sign depends on summation of chosen sub-matrices' rows and columns).
     - This is convenient for block matrices computation: $A=\begin{bmatrix} B_{m\times m} & * \\ O & C_{n\times n}\end{bmatrix},\det A=\det B \det C$ where $A$ is not diagonal matrix but block matrix is.
-- $A$ is invertable $\Leftrightarrow \det A \ne 0$ 
+- $A$ is invertable $\Leftrightarrow \det A \ne 0\Leftrightarrow \lambda _A\ne 0$ ($\prod \lambda \ne 0$)
     > proof: split $A$ with element matrices using Gauss-Jordan elimination and use property 9.
 
 ## calculation

@@ -1,7 +1,8 @@
 # types of matrices (L3, L4)
 
 ## diagonal matrix
-- $A=\mathrm{diag}(a_1,\dots ,a_n),B=\mathrm{diag}(b_1,\dots ,b_n)\to AB=\mathrm{diag}(a_1b_1,\dots ,a_nb_n)$
+- $A=\mathrm{diag}(a_1,\dots ,a_n),B=\mathrm{diag}(b_1,\dots ,b_n)\to AB=BA=\mathrm{diag}(a_1b_1,\dots ,a_nb_n)$
+- $D=\mathrm{diag}(d_1,\dots ,d_n)$
 
 ## inverse matrix
 - $AA^{-1}=I=A^{-1}A$
@@ -9,7 +10,7 @@
     - A is not square matrix ($A^{-1}$ in left and right is different)
     - row / column vectors of A is linear combination of other row / column vectors, w.r.t. exists non-zero vector $x$ make $Ax=0$
         > proof: assume A is invertable, thus $Ax=0\to A^{-1}Ax=Ix=0$, opposite to requirement $x\neq 0$
-    - column/row of A is parallel(the same meaning to above one), thus A cannot be transformed to identity matrix.
+    - column / row of A is parallel (the same meaning to above one), thus A cannot be transformed to identity matrix.
 - get inverse matrix:
     - Gauss-Jordan elimination: argumented matrix (增广矩阵) combine total identity matrix $[A|I]\to [EA|EI]=[I|E]\to E=A^{-1}$
 - get $Ax=b\to x=A^{-1}B$: $[A|B]\to [I|A^{-1}B]$
@@ -51,11 +52,11 @@
     - Multiplication of any two matrices from this group still in this group (closure).
 
 ## relationships of matrices
-- all have properties:
+- equivalence, contract and similarity have properties:
     1. reflexivity: $A\cong A$
     2. symmetry: $A\cong B\Rightarrow B\cong A$
     3. transitivity: $A\cong B,B\cong C\Rightarrow A\cong C$
-- equivalent: $A_{m\times n}\cong B_{m\times n}\Leftrightarrow A=PBQ$ where $P$ and $Q$ is invertable.
+- equivalence: $A_{m\times n}\cong B_{m\times n}\Leftrightarrow A=PBQ$ where $P$ and $Q$ is invertable.
     - $\Leftrightarrow R(A)=R(B)$
         > proof: equivalent means $B$ can be transformed to $A$ through elementary row and column operation $\to A,B$ has same reduced echelon form.
 - contract: $A=P^TBP$ where $A,B$ are square matrices, and $P$ is invertable.
@@ -63,7 +64,5 @@
 - similarity: $A_{n\times n}\sim B_{n\times n}\Leftrightarrow A=P^{-1}BP$ where $A,B$ are square matrices, and $P$ is invertable.
     > prove transitivity: $B=P^{-1}AP\to C=Q^{-1}BQ=Q^{-1}P^{-1}APQ=(PQ)^{-1}A(PQ)$
     - $\Rightarrow A\cong B\Rightarrow R(A)=R(B)$
-    - $\Rightarrow \lambda _{A}=\lambda _{B}$
+    - $\Rightarrow \lambda _{A}=\lambda _{B}$ ($\Rightarrow \det A=\det B, \text{tr}(A)=\text{tr}(B)$)
         > proof: $\det (\lambda I-B)=\det (\lambda I-P^{-1}AP)=\det (P^{-1}(\lambda I-A)P)=\det P^{-1}\det (\lambda I-A)\det P=\det (\lambda I-A)$
-        - $\Leftarrow$
-    - requires rank, inertia index and eigen values are equivalent.
