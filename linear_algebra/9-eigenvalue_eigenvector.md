@@ -1,7 +1,7 @@
 # eigenvalue and eigenvector
 
 ## eigenvalues, eigenvectors
-- $Ax\parallel x:Ax=\lambda x$, get all $\lambda (x\ne 0)$
+- $A_{n\times n}x\parallel x:Ax=\lambda x$, get all $\lambda (x\ne 0)$
 - special eigenvalues
     - upper triangle matrix: $\lambda _U=\text{diag}(U)$ (proof: use eigenvalue equation)
     - $A$ is singular $\Leftrightarrow \lambda _i=0$ is one eigen value; $A$ is invertable $\Leftrightarrow \lambda _A\ne 0$
@@ -41,20 +41,48 @@
     - symmetric / close symmetric matrix has real eigenvalues; $Q^T=-Q$: anti-symmetric, has pure imaginary eigenvalues.
     - real symmetric matrix has orthogonal eigenvectors with different eigenvalues.
 
-
 ## diagonalize
-- $S=[x_1,\dots ,x_n]$ where $S$ is **independent**
-- $AS=[\lambda_1x_1\ \dots \lambda_nx_n]=S\Lambda$, $\Lambda _{n\times n}=\mathrm{diag}(\lambda _1,\dots ,\lambda _n)$
-- $A\sim \Lambda: S^{-1}AS=\Lambda$, $A=S\Lambda S^{-1}\to \lambda _A=\mathrm{diag}(\Lambda)$
+- diagonalize
+    - eigenvectors: $S=(x_1,\dots ,x_n)$ where $S$ is **independent**
+    - diagonal eigenvalues matrix: $AS=[\lambda_1x_1\ \dots \lambda_nx_n]=S\Lambda$, $\Lambda _{n\times n}=\mathrm{diag}(\lambda _1,\dots ,\lambda _n)$
+    - similarity: $A\sim \Lambda: S^{-1}AS=\Lambda$, $A=S\Lambda S^{-1}\to \lambda _A=\mathrm{diag}(\Lambda)$
+- independence
+    1. different eigenvalues corresponding to eigenvectors are independent.
+        > proof: use mathematical induction, for $A, \Lambda _{s\times s}=\mathrm{diag}(\lambda _1,\dots ,\lambda _s)$ has different eigenvalues, $X_{n\times s}=(x_1,\dots ,x_s)$ are their one eigenvector, $k_{s\times 1}=(k_1,\dots ,k_s)^T, Xk=0=AXk=X\Lambda k=\lambda _sXk\to X(\Lambda -\lambda _sI)k=0$, from induction: $R(X_{n\times (s-1)})=s-1\to k=(0,\dots ,0,k_s)\to k_sx_s=0, x_s\ne 0\to k_s=0\to k=0\to R(X_{n\times s})=s$
+    2. $\Rightarrow$ different eigenvalues corresponding to basis set are independent.
+- requirement
+    1. diagonalized $\Leftrightarrow A$ has $n$ independent eigenvectors. (proof: $S$ is independent)
+    2. diagonalized $\Leftarrow A$ has $n$ different eigenvalues. (proof: see independence illustration 1)
+    3. diagonalized $\Leftrightarrow$ for all eigenvalues: algebratic multiplicity = geometry multiplicity. (proof: see independence illustration 2)
+- order: $x_i$ should match $\lambda _i$, preserve order in $\Lambda ,S$
+- unique
+    - $S$ is not unique due to eigenvectors is chosen in space.
+    - regardless order, $\Lambda$ is unique.
 - If eigenvalues are different, $A$ has $n$ independent eigenvectors(diagonalizable). Otherwise it may (not) has $n$ independent eigenvectors.
 
+## real symmetric matrix case
+- modulus of complex vector: $(x,\bar{x})=\bar{x}^Tx=\bar{x_1}x_1+\dots=\sum |x_n|^2=\left \| x \right \|^2$
+- real symmetric matrix $A^T=A,\bar{A}=A$
+    - can be diagonalized (spectral theorem)
+- eigenvalues are real
+    > proof: $Ax=\lambda x\mathrm{\ (a)}\to \text{(conjugate)} A\bar{x}=\bar{\lambda}\bar{x}(A=\bar{A})\mathrm{\ (b)}\to \text{(transpose)} \bar{x}^TA=\bar{\lambda}\bar{x}^T\mathrm{\ (c)}$;  
+    > (a) left multiply $\bar{x}^T:\bar{x}^TAx=\lambda\bar{x}^Tx$  
+    > (c) right multiply $x:\bar{x}^TAx=\bar{\lambda}\bar{x}^Tx$  
+    > $\to \lambda=\bar{\lambda}$
+- different eigenvalues corresponding to eigenvectors are orthogonal
+    > proof: suppose $Ax_1=\lambda _1x_1,Ax_2=\lambda _2x_2\to$ transpose: $x_1^TA=\lambda _1x_1^T\to$ right multiply $x_2:x_1^T(Ax_2)=\lambda _1x_1^Tx_2=x_1^T\lambda _2x_2\to (\lambda _1-\lambda _2)x_1^Tx_2=0, \lambda _1\ne \lambda _2\to x_1\perp x_2$
+    - $A=Q\Lambda Q^{-1}=Q\Lambda Q^T=A^T$ ($Q$ has done normalization)
+    - spectral theorem: every symmetric matrix is a combination of orthogonal projection matrices (relative to oblique projection).
+        - $A=\lambda _1q_1q_1^T+\dots +\lambda _nq_nq_n^T$
+        - $P=\frac{qq^T}{q^Tq}=qq^T, P^T=P,P^n=P$
+- ** #signs of pivots (through elimination) are the same as #signs of eigenvalues (to judge stability of power)
+
 ## power
-- $A^2\to \lambda _{A^2}=\lambda _A^2$
-    > proof: $A^2x=\lambda Ax=\lambda ^2x$
+- $A^i\to \lambda _{A^i}=\lambda _A^i$ eigenvalues power likewise
+    > proof: $A^ix=\lambda A^{i-1}x=\lambda ^ix$
 - $x_{A^i}=x_{A}$ eigenvectors hold stable
     > proof: $A^2=S\Lambda S^{-1}S\Lambda S^{-1}=S\Lambda^2S^{-1}\to A^k=S\Lambda ^kS^{-1}$
 - matrix power trend: $\lim _{k\to \infty}A^k\to 0$ if all $|\lambda _i|<1$
-
 - difference equation: $u_{k+1}=Au_{k}$ so $u_{k}=Au_0$, where $u_0=c_1x_1+\dots +c_nx_n=Sc$ ($c$ is column vector like $x$), $A^nu_0=c_1\lambda ^nx_1+\dots =\Lambda ^nSc$
     - Fibonacci: $A=\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix},u_k=\begin{bmatrix}F_{k+1} \\ F_k \end{bmatrix}$.
     - get eigenvalues then eigenvectors of $A$ (growth speed), the bigger eigenvalue determines the growth(in polynominal this is main term)

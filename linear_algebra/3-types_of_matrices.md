@@ -1,11 +1,17 @@
 # types of matrices (L3, L4)
 
 ## diagonal matrix
-- $A=\mathrm{diag}(a_1,\dots ,a_n),B=\mathrm{diag}(b_1,\dots ,b_n)\to AB=BA=\mathrm{diag}(a_1b_1,\dots ,a_nb_n)$
-- $D=\mathrm{diag}(d_1,\dots ,d_n)$
+- diagonal multiply diagonal: $A_{n\times n}=\mathrm{diag}(a_1,\dots ,a_n),B_{n\times n}=\mathrm{diag}(b_1,\dots ,b_n)\to AB=BA=\mathrm{diag}(a_1b_1,\dots ,a_nb_n)$
+- diagonal multiply normal:
+    - $A_{m\times n}=(a_1,\dots ,a_n), D_{n\times n}=\mathrm{diag}(d_1,\dots ,d_n)\to AD=(d_1a_1,\dots ,d_na_n)$
+    - $A_{m\times n}=(a_1^T,\dots ,a_m^T)^T, D_{m\times m}=\mathrm{diag}(d_1,\dots ,d_m)\to DA=(d_1a_1^T,\dots ,d_ma_m^T)^T$
 
 ## inverse matrix
 - $AA^{-1}=I=A^{-1}A$
+    - $A^{-1}$ is unique
+        > proof: $AB=I=AC\to B=IB=CAB=CI=C$
+    - condition: $A_{n\times n}B_{n\times n}=I\Rightarrow \exists A^{-1},B^{-1},B=A^{-1},A=B^{-1}$, no need another condition $BA=I$
+        > proof: $\det AB=\det A\det B=\det I=1\to \det A,\det B\ne 0\to \exists A^{-1}=B,B^{-1}=A$
 - not invertable:
     - A is not square matrix ($A^{-1}$ in left and right is different)
     - row / column vectors of A is linear combination of other row / column vectors, w.r.t. exists non-zero vector $x$ make $Ax=0$

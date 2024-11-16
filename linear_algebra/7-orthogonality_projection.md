@@ -50,7 +50,7 @@
     - $A^TA$ is positive semidefinite matrix
         > proof: $x^TA^TAx=(Ax)^TAx=\left \| Ax \right \|\ge 0$
 
-## projection
+## orthogonal projection
 - one dimension (vector): project $\vec{b}$ to line $\vec{a}$
     - projection vector: $\vec{p}=x\vec{a}$
     - projcetion direction: $\vec{e}=(\vec{b}-\vec{p})\perp \vec{a}$
@@ -79,9 +79,9 @@
         > proof: $(I-P)^TP=0$
 
 ## orthonormal matrices
-- orthonormal: $A=I$ columns are independent, perpendicular and unit vectors
+- orthonormal: like $A=I$ columns are independent, perpendicular and unit vectors.
     - $Q=[q_1,\dots ,q_n],Q^TQ=I$
-    - **but $Q$ is square matrix** $\Rightarrow Q^T=Q^{-1}\Rightarrow QQ^T=I$
+    - **but $Q$ is square matrix** $\Rightarrow Q^T=Q^{-1}\Rightarrow QQ^T=I\to$ rows are independent, perpendicular and unit vectors.
     - $\det Q=\pm 1$
         > proof: $\det Q^TQ=\det Q^T \det Q=(\det Q)^2=\det I=1$
     - $A^TA=B^TB=I\Rightarrow (AB)^T(AB)=I$

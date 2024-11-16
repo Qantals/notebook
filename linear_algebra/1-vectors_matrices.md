@@ -23,5 +23,5 @@
     - $x^TA=b^T$ expand $x^T$ and $b^T$ in column direction
     - ~ is group of linear combination results
     - ~ is group of inner product between $A$ row vector set and $B$ column vector set.
-    - $C_{ij}=\sum _ka_{ik}b_{kj}$
-    - ** $C=\sum _kA_{k1}B_{1k}+\dots$ is column vector multiply row vector.
+    - $c_{ij}=\sum _ka_{ik}b_{kj}$
+    - spectural theorem: $C=\sum _ia_{i}b_{i}+\dots$ is column vector $a_i$ multiply row vector $b_i$.
