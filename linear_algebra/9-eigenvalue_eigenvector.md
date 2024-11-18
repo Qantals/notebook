@@ -45,7 +45,8 @@
     - similarity: $A\sim \Lambda: S^{-1}AS=\Lambda$, $A=S\Lambda S^{-1}\to \lambda _A=\mathrm{diag}(\Lambda)$
 - independence
     1. different eigenvalues corresponding to eigenvectors are independent.
-        > proof: use mathematical induction, for $A, \Lambda _{s\times s}=\mathrm{diag}(\lambda _1,\dots ,\lambda _s)$ has different eigenvalues, $X_{n\times s}=(x_1,\dots ,x_s)$ are their one eigenvector, $k_{s\times 1}=(k_1,\dots ,k_s)^T, Xk=0=AXk=X\Lambda k=\lambda _sXk\to X(\Lambda -\lambda _sI)k=0$, from induction: $R(X_{n\times (s-1)})=s-1\to k=(0,\dots ,0,k_s)\to k_sx_s=0, x_s\ne 0\to k_s=0\to k=0\to R(X_{n\times s})=s$
+        > proof: use mathematical induction, for $A, \Lambda _{s\times s}=\mathrm{diag}(\lambda _1,\dots ,\lambda _s)$ has different eigenvalues, $S_{n\times s}=(x_1,\dots ,x_s)$ are their one eigenvector, $k_{s\times 1}=(k_1,\dots ,k_s)^T$  
+        > $Sk=0=\lambda _sSk=0=ASk=S\Lambda k\to S(\Lambda -\lambda _sI)k=0$, from induction: $R(S_{n\times (s-1)})=s-1\to k=(0,\dots ,0,k_s)\to$ from $Sk=0\to k_sx_s=0, x_s\ne 0\to k_s=0\to k=0\to R(S_{n\times s})=s$
     2. from 1: different eigenvalues corresponding to basis set are independent.
 - requirement
     1. diagonalized $\Leftrightarrow A$ has $n$ independent eigenvectors. (proof: $S$ is independent)
