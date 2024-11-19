@@ -18,7 +18,7 @@
 ## rank
 - obvious
     - invertable: $\text{rank}(A)=R(A)=n$
-    - $A_{m\times n},0\le R(A)\le \min\{m,n\}$
+    - $A_{m\times n},0\le R(A)\le \min(m,n)$
 - $R(E_1AE_2)=R(A)$ where $E_1,E_2$ are elementary matrices.
     - $R(A)=r$ means $A$ can be operated to row echelon form with $r$ non-zero rows.
     - equivalence: $R(PA)=R(AQ)=R(PAQ)=R(A_{m\times n})$ where $P_{m\times m},Q_{n\times n}$ are invertable.
@@ -30,7 +30,7 @@
     > where $r$ is column rank, $s$ is row rank;  
     > so $A_{m\times n}=(\alpha ^T_1,\dots ,\alpha ^T_m)^T=P_{m\times s}A'_{s\times n}\to r\le s$ from the prespective of columns of $P$  
     > similarly, $A_{m\times n}=A'_{m\times r}P_{r\times n}\to s\le r$ so $r=s$.
-- $R(AB)\le \min\{R(A), R(B)\}$
+- $R(AB)\le \min(R(A), R(B))$
     > proof: for $C=AB\to C$ is linear representation of $A\to R(C)\le R(A)$, and $R(C)=R(C^T)=R(B^TA^T)\le R(B^T)=R(B)$
 - $R(A+B)\le R(A)+R(B)$
     > proof: $A=P_1\begin{bmatrix}I_{r_1\times r_1} & 0 \\ 0 & 0 \end{bmatrix}Q_1, B=P_2\begin{bmatrix}I_{r_2\times r_2} & 0 \\ 0 & 0 \end{bmatrix}Q_2, R(A)+R(B)=r_1+r_2=R(\begin{bmatrix}P_1 & 0 \\ 0 & P_2\end{bmatrix}\begin{bmatrix} \begin{bmatrix}I_{r_1\times r_1} & 0 \\ 0 & 0\end{bmatrix} & 0 \\ 0 & \begin{bmatrix}I_{r_2\times r_2} & 0 \\ 0 & 0\end{bmatrix}\end{bmatrix}\begin{bmatrix}Q_1 & 0 \\ 0 & Q_2\end{bmatrix})=R(\begin{bmatrix}A & 0 \\ 0 & B\end{bmatrix})=R(\begin{bmatrix}A & A+B \\ 0 & B\end{bmatrix})\ge R(A+B)$

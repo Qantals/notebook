@@ -1,9 +1,11 @@
-# eigenvalue and eigenvector (L21, L22)
+# eigenvalue and eigenvector (L21, L22, L26)
 
 ## eigenvalues, eigenvectors
 - $A_{n\times n}x\parallel x:Ax=\lambda x$, get all $\lambda (x\ne 0)$
 - special eigenvalues
     - upper triangle matrix: $\lambda _U=\text{diag}(U)$. the same as lower triangle matrix and diagonal matrix. (proof: use eigenvalue equation, property of determinants)
+    - $\lambda _A=\lambda _{A^T}$ but not eigenvectors (row space $\ne$ column space)
+        > proof: $\det (\lambda I-A)=\det (\lambda I-A)^T=\det (\lambda I-A^T)$
     - $A$ is singular $\Leftrightarrow \lambda _i=0$ is one eigen value; $A$ is invertable $\Leftrightarrow \lambda _A\ne 0$
         > proof: $Ax=0=0x,x\ne 0, \det A=\prod \lambda _i$
     - $A^2=A\Rightarrow \lambda _A=0,1$
@@ -57,7 +59,7 @@
     - $S$ is not unique due to eigenvectors is chosen in space.
     - regardless order, $\Lambda$ is unique.
 
-## real symmetric matrix case
+## real symmetric matrix case (L26)
 - real symmetric matrix $A^T=A,\bar{A}=A$
     - can be diagonalized (spectral theorem)
 - eigenvalues are real
@@ -74,6 +76,6 @@
     > proof: suppose $Ax_1=\lambda _1x_1,Ax_2=\lambda _2x_2\to$ transpose: $x_1^TA=\lambda _1x_1^T\to$ right multiply $x_2:x_1^T(Ax_2)=\lambda _1x_1^Tx_2=x_1^T\lambda _2x_2\to (\lambda _1-\lambda _2)x_1^Tx_2=0, \lambda _1\ne \lambda _2\to x_1\perp x_2$
     - $A=Q\Lambda Q^{-1}=Q\Lambda Q^T=A^T$ ($Q$ has done normalization)
     - spectral theorem: every symmetric matrix is a combination of orthogonal projection matrices (relative to oblique projection).
-        - $A=\lambda _1q_1q_1^T+\dots +\lambda _nq_nq_n^T$
+        - $A=\lambda _1q_1q_1^T+\dots +\lambda _nq_nq_n^T$ (another perspective of matrix multiplication)
         - $P=\frac{qq^T}{q^Tq}=qq^T, P^T=P,P^n=P$
 - ** #signs of pivots (through elimination) are the same as #signs of eigenvalues (to judge stability of power)

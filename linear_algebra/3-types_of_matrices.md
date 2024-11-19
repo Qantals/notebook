@@ -30,6 +30,7 @@
 
 ## transpose matrix
 - exchange row and column, along diagonal
+- $(A+B)^T=A^T+B^T$
 - $(AB)^T=B^T A^T$
     > proof: compare element-wise.
 - $(ABC)^T=C^TB^TA^T$

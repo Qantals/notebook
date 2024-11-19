@@ -15,7 +15,7 @@
     - in essence is about angle between vectors.
     - $(x,y)^2\le \left \| x \right \|^2 \left \| y \right \|^2=(x,x)(y,y)$ if and only $x=ky$ linear dependent meets equal sign.
     > proof:
-    > 1. $x,y$ is independent $\to \forall t:tx+y\ne 0\to (tx+y,tx+y)=(x,x)t^2+2(x,y)t+(y,y)>0\to \Delta =4(x,y)^2-4(x,x)(y,y)\le 0$
+    > 1. $x,y$ is independent $\to \forall t:tx+y\ne 0\to (tx+y,tx+y)=(x,x)t^2+2(x,y)t+(y,y)>0\to \Delta =4(x,y)^2-4(x,x)(y,y)<0$
     > 2. $x,y$ is dependent: $x,y$ has 0 must right; otherwise $\to \forall k:y=kx\ne 0\to (x,y)^2=(x,kx)^2=k^2(x,x)^2=(x,x)(kx,kx)=(x,x)(y,y)$ meets equal sign.
 
 ## orthogonality / perpendicularity
@@ -24,8 +24,8 @@
         > proof: use linearity of inner product
     - $\Rightarrow$ independence (see Cauchy-Schwarz equality condition)
         > proof: $Ax=0,A=(a_1,\dots ,a_n),(a_1,Ax)=\sum (a_1,x_1a_1)+\dots +(a_1,x_na_n)=(a_1,x_1a_1)+0+\dots +0=x_1\left \| a_1 \right \|^2=a_1^TAx=a_1^T0=0\to x_1=0$, similarly, $(a_i,Ax)=0\to x_i=0\dots (A^TAx=\vec{0})\to x=0$ only has zero solution.
-    - easily computational cofficients: $Ax=b$, get cofficients of $b$ is $x_i=\frac{a_i^Tb}{\left \| a_i \right \|}$ i.e. inner product $\Leftrightarrow$ projection.
-        > proof: $A^TAx=A^Tb=\Lambda x$ where $\Lambda=\text{diag}(\left \| a_1 \right \| ,\dots ,\left \| a_n \right \|)$, so for each row $\left \| a_i \right \| x_i=a_i^Tb$ only need one inner product.
+    - easily computational cofficients: $Ax=b$, get cofficients of $b$ is $x_i=\frac{a_i^Tb}{\left \| a_i \right \|^2}$ i.e. inner product $\Leftrightarrow$ projection.
+        > proof: $A^TAx=A^Tb=\Lambda x$ where $\Lambda=\text{diag}(\left \| a_1 \right \|^2 ,\dots ,\left \| a_n \right \|^2)$, so for each row $\left \| a_i \right \|^2 x_i=a_i^Tb$ only need one inner product.
 - orthogonal subspace: $S\perp T$ is every vector in $S\perp $ every vectors in $T$
     - $S\cap T=$ line: not orthogonal, becasue $\exists $ vectors in this line in both $S,T$.
     - orthogonal vector set: $S=(s_1,\dots ,s_s),T=(t_1,\dots ,t_t)\to S^TT=0$
