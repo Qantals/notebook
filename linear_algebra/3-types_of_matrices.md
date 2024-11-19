@@ -41,7 +41,7 @@
     > proof: $(A^TA)^T=A^T(A^T)^T=A^TA$
 - $A^T=A, B^T=B, AB=BA \to (AB)^T=AB$ otherwise $AB\ne BA\to (AB)^T\ne AB$
     > proof: $(AB)^T=B^TA^T=BA =\text{or}\ne AB$
-- anti-symmetric: $A^T=-A$. example: rotation matrix.
+- antisymmetric: $A^T=-A$. example: rotation matrix.
 
 ## block matrix
 - common: diagonal, triangle, column / row vectors.
