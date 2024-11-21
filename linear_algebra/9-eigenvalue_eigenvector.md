@@ -66,7 +66,7 @@
     > proof: $Ax=\lambda x\mathrm{\ (a)}\to \text{(conjugate)} A\bar{x}=\bar{\lambda}\bar{x}(A=\bar{A})\mathrm{\ (b)}\to \text{(transpose)} \bar{x}^TA=\bar{\lambda}\bar{x}^T\mathrm{\ (c)}$;  
     > (a) left multiply $\bar{x}^T:\bar{x}^TAx=\lambda\bar{x}^Tx$  
     > (c) right multiply $x:\bar{x}^TAx=\bar{\lambda}\bar{x}^Tx$  
-    > $\bar{x}^Tx=\left \| x \right \|^2>0 \to \lambda=\bar{\lambda}$
+    > $\bar{x}^Tx=\| x \|^2>0 \to \lambda=\bar{\lambda}$
 - real anti-symmetric has pure imaginary eigenvalues.
     > proof: similarly, $\bar{x}^TAx=\lambda \bar{x}^Tx=-\bar{\lambda}\bar{x}^Tx\to \lambda =-\bar{\lambda}$
 - real matrix has conjugate eigenvalues
