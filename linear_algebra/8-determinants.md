@@ -28,7 +28,10 @@
                 > proof:  
                 > 1. When exchange between two near numbers, the inversion number $\pm 1$ so it changes parity;  
                 > 2. When exchange between two far numbers including $m$ numbers in the middle, it need $2m+1$ (this is odd so changes parity, otherwise holds parity) near number changes where $a\to b$ needs $m+1$ then $b\to a$ needs $m$, so inversion number changes parity.
-- cofactors (代数余子式) of $a_{ij}\to C_{ij}=(-1)^{i+j} \det$ (n-1)-order matrix without row $i$ and col $j$.
+- sub determinants
+    - minor: choose #$i$ rows and #$j$ columns from $A$. 
+    - principal minor: rows label is the same as columns label.
+    - cofactors (代数余子式) of $a_{ij}\to C_{ij}=(-1)^{i+j} \det$ (n-1)-order matrix without row $i$ and col $j$.
 - cofactor formula: along any row or any column (becasue $\det A=\det A^T$).
     - Laplace expansion: choose any $k$ rows, the determinant equals to all sub-matrices (square matrices) with these $k$ rows (amount is $C_n^k$) multiply their cofactors dividely (sign depends on summation of chosen sub-matrices' rows and columns).
     - This is convenient for block matrices computation: $A=\begin{bmatrix} B_{m\times m} & * \\ O & C_{n\times n}\end{bmatrix},\det A=\det B \det C$ where $A$ is not diagonal matrix but block matrix is.

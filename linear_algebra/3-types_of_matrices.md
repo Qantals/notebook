@@ -72,5 +72,7 @@
 - similarity: $A_{n\times n}\sim B_{n\times n}\Leftrightarrow A=P^{-1}BP$ where $A,B$ are square matrices, and $P$ is invertable.
     > prove transitivity: $B=P^{-1}AP\to C=Q^{-1}BQ=Q^{-1}P^{-1}APQ=(PQ)^{-1}A(PQ)$
     - $\Rightarrow A\cong B\Rightarrow R(A)=R(B)$
-    - $\Rightarrow \lambda _{A}=\lambda _{B}$ ($\Rightarrow \det A=\det B, \text{tr}(A)=\text{tr}(B)$)
-        > proof: $\det (\lambda I-B)=\det (\lambda I-P^{-1}AP)=\det (P^{-1}(\lambda I-A)P)=\det P^{-1}\det (\lambda I-A)\det P=\det (\lambda I-A)$
+    - $\Rightarrow \lambda _{A}=\lambda _{B}, x_A\ne x_B$ ($\Rightarrow \det A=\det B, \text{tr}(A)=\text{tr}(B)$)
+        > proof1: $\det (\lambda I-B)=\det (\lambda I-P^{-1}AP)=\det (P^{-1}(\lambda I-A)P)=\det P^{-1}\det (\lambda I-A)\det P=\det (\lambda I-A)$  
+        > proof2: (can see change of eigenvectors) $Ax=\lambda x\to P^{-1}BPx=\lambda x\to B(Px)=\lambda (Px)$ share the same $\lambda$
+    - usage: $\sim$ diagonal eigenvalues $\Lambda$ or Jordan form

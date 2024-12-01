@@ -4,10 +4,13 @@
 - $A_{n\times n}x\parallel x:Ax=\lambda x$, get all $\lambda (x\ne 0)$
 - special eigenvalues
     - upper triangle matrix: $\lambda _U=\text{diag}(U)$. the same as lower triangle matrix and diagonal matrix. (proof: use eigenvalue equation, property of determinants)
+    - $\lambda _{AB}=\lambda _{BA}$
+        > proof: $ABx=\lambda x\to (BA)Bx=\lambda (Bx)$
     - $\lambda _A=\lambda _{A^T}$ but not eigenvectors (row space $\ne$ column space)
         > proof: $\det (\lambda I-A)=\det (\lambda I-A)^T=\det (\lambda I-A^T)$
     - $A$ is singular $\Leftrightarrow \lambda _i=0$ is one eigen value; $A$ is invertable $\Leftrightarrow \lambda _A\ne 0$
         > proof: $Ax=0=0x,x\ne 0, \det A=\prod \lambda _i$
+    - $\lambda =0$ corresponding to eigenvector in $N(A)$ ($Ax=0x=0$ solve null space)
     - $A^2=A\Rightarrow \lambda _A=0,1$
         > proof: $Ax=\lambda x=A^2x=A(\lambda x)=\lambda Ax=\lambda ^2x\to \lambda ^2-\lambda =0$
     - projection matrix: $Px=x\to \lambda =1;Px=0\to \lambda =0$
