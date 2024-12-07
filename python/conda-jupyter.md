@@ -60,7 +60,7 @@ delete words:`Ctrl+backspace`/`Ctrl+delete`
 `%` magic functions 模拟命令行
 
 ```py
-%matplotlib inline/notebook/wiget # 每个单元格后自动补plt.show() 
+%matplotlib inline/notebook # 普通/交互图形 no plt.show()
 
 import IPython.display as ipd
 ipd.Audio(waveform.numpy(), rate=sample_rate)

@@ -23,7 +23,7 @@ np.around(a,decimals) # 舍入到指定位
 np.random.choice(a, size=None, replace=True, p=None) # need 1-D array
 np.random.randn(shape) # 标准正态分布随机数
 np.random.rand(shape)=np.random.random(shape) # 均匀分布
-np.random.randint(low, high=None, size=None) # 整数
+np.random.randint(low, high, size) # 整数
 
 # 文件
 np.save(file, arr) # file为.npy文件
@@ -147,6 +147,10 @@ for element in a.flat: # 迭代元素，默认C-order
 
 ```py
 # normal
+x = np.linspace(0, 5, 10)
+y = np.sin(x)
+# np.ndarray is preferred
+
 from matplotlib import pyplot as plt
 myfont = matplotlib.font_manager.FontProperties(fname=r'C:/Windows/Fonts/msyh.ttf')
 plt.rcParams['figure.figsize'] = (10.0, 8.0)
@@ -161,13 +165,44 @@ plt.legend(['曲线1', '曲线2']) | ax.legend() # 折线标签
 
 plt.savefig('1.png/eps/svg'[, dpi=300, bbox_inches='tight']) | fig.savefig() # can be without plt.show()
 plt.show() # 注意和savefig顺序
-...
 plt.figure(2)
 plt.show() | plt.draw() # draw在原来图像上重绘，可选
 plt.close() # 节约内存
 
 
+
+
+
+
+
+
 # subplot
+fig = plt.figure(num, figsize=(width, height)) # activate a figure
+# num starts from 1
+# figure size unit is "inch"
+fig, axs = plt.subplots(nrows, ncols, sharex, sharey) # fig.subplots()
+# fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2) # axs is group of axes
+fig.subplot_mosaic() # plt.subplot_mosaic 复杂子图构型
+ax = fig.add_subplot(nrows, ncols, index) # optional: index=(first, last) compose unequal subfig
+figL, figR = fig.subfigures(1, 2)
+fig = plt.gcf()
+ax = plt.gca()
+
+ax.plot(x,y,label='line1') # plt.plot(x,y)
+ax.legend() # plt.legend()
+
+fig.suptitle('Figure') # don't use this for one axes
+ax.set_title('Axes', loc='left', fontstyle='oblique', fontsize='medium') # plt.title()
+ax.set_xlabel('x-label', loc) # ax.set_ylabel
+
+
+fig.savefig('./name.png', dpi=300, bbox_inches='tight') # plt.savefig()
+
+
+
+
+
+
 fig = plt.figure(figsize=(8, 8))
 ax1 = fig.add_subplot(2,1,1) # (211) is OK, (111)=()
 ax1 = plt.subplot(2,  1,  1) # same
@@ -175,22 +210,14 @@ ax1.set(xlim=[0.5, 4.5], ylim=[-2, 8], title='An Example Axes', ylabel='Y-Axis',
 plt.plot(x, y)
 plt.show()
 
-
 # subplots
-fig = plt.gcf() # get current figure
-ax = plt.gca()
-
 fig, axs = plt.subplots(2,2)
 ax1 = axs[0,0]
 ax4 = axs[1,1]
-plt.plot() # 直接在ax4=(1,1)上画
-ax.plot(x,y) # 指定子图画
-
 
 # others
 n, bins, patches = plt.hist(arr, bins=10, normed=0, facecolor='black', edgecolor='black', histtype='bar')
 plt.scatter()
-
 
 # image
 from matplotlib.image import imread

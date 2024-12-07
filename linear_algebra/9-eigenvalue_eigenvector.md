@@ -13,6 +13,8 @@
     - $\lambda =0$ corresponding to eigenvector in $N(A)$ ($Ax=0x=0$ solve null space)
     - $A^2=A\Rightarrow \lambda _A=0,1$
         > proof: $Ax=\lambda x=A^2x=A(\lambda x)=\lambda Ax=\lambda ^2x\to \lambda ^2-\lambda =0$
+    - orthonormal matrix: $|\lambda |=1$
+        > proof: $Qx=\lambda x\to \| Qx\|=\| x\|=|\lambda| \| x\|$
     - projection matrix: $Px=x\to \lambda =1;Px=0\to \lambda =0$
     - permutation matrix: $A=\begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix},x=\begin{bmatrix} 1 \\ 1\end{bmatrix}\to \lambda =1;x=\begin{bmatrix}-1 \\ 1\end{bmatrix}\to \lambda =-1$.
         > generalization: $A_1=\begin{bmatrix} a & s-a \\ b & s-b\end{bmatrix},x_1=\begin{bmatrix} 1 \\ 1\end{bmatrix},\to Ax_1=sx_1$ row sum is equal $\to$ row sum is one eigen value;  
@@ -75,8 +77,9 @@
 - real matrix has conjugate eigenvalues
     > proof1: $A=\bar{A}\to f_A(\lambda)=\det (\lambda I-A)$ has real coefficients $\to$ has conjugate roots.  
     > proof2: $Ax=\lambda x\to A\bar{x}=\bar{\lambda}\bar{x}\to$ $\bar{\lambda}$ is eigenvalue and its eigenvector is $\bar{x}$
-- different eigenvalues corresponding to eigenvectors are orthogonal
+- symmetric matrix: different eigenvalues corresponding to eigenvectors are orthogonal
     > proof: suppose $Ax_1=\lambda _1x_1,Ax_2=\lambda _2x_2\to$ transpose: $x_1^TA=\lambda _1x_1^T\to$ right multiply $x_2:x_1^T(Ax_2)=\lambda _1x_1^Tx_2=x_1^T\lambda _2x_2\to (\lambda _1-\lambda _2)x_1^Tx_2=0, \lambda _1\ne \lambda _2\to x_1\perp x_2$
+    - $A^T=A, A^T=-A, Q^T=Q^{-1}$ meets $AA^T=A^TA$: symmetric, anti (skew) symmetric and orthonormal matrices meet this condition. (wait for proof)
     - $A=Q\Lambda Q^{-1}=Q\Lambda Q^T=A^T$ ($Q$ has done normalization)
     - spectral theorem: every symmetric matrix is a combination of orthogonal projection matrices (relative to oblique projection).
         - $A=\lambda _1q_1q_1^T+\dots +\lambda _nq_nq_n^T$ (another perspective of matrix multiplication)

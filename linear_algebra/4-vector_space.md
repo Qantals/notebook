@@ -57,7 +57,6 @@
     - $\Leftrightarrow$ $R(A)\le R(B)$ whether $A,B$ is independent or not
         > proof: check and compare maximal linearly independent subset
 - basis: dimension of maximal linearly independent subset span space equals to vector dimension.
-    - basis / coordinate transformation: $B=AT$ transform basis $A$ to $B$ through transition matrix $T$, so the vector in the space $\alpha =Ax_1=Bx_2=ATx_2\to x_1=Tx_2$
 
 ## four fundamental subspaces
 - column space: $C(A)=Ax$ for all $x$
