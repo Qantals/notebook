@@ -49,6 +49,7 @@
     - $R(A)=n\to A^TA$ is invertable
     - $A^TA$ is positive semidefinite matrix
         > proof: $x^TA^TAx=(Ax)^TAx=\| Ax \|\ge 0$
+    - $\det A^TA\ne \det AA^T$ for $A_{m\times n},m\ne n$
 
 ## orthogonal projection
 - one dimension (vector): project $\vec{b}$ to line $\vec{a}$

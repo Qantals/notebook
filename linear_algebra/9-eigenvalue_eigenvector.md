@@ -1,6 +1,7 @@
 # eigenvalue and eigenvector (L21, L22, L26)
 
 ## eigenvalues, eigenvectors
+- useful for analysing particular matrices
 - $A_{n\times n}x\parallel x:Ax=\lambda x$, get all $\lambda (x\ne 0)$
 - special eigenvalues
     - upper triangle matrix: $\lambda _U=\text{diag}(U)$. the same as lower triangle matrix and diagonal matrix. (proof: use eigenvalue equation, property of determinants)

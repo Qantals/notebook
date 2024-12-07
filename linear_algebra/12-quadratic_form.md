@@ -1,3 +1,5 @@
+# quadratic form (L28)
+
 ## positive definite matrix
 - definition
     - $\Leftrightarrow x^TAx>0 (\forall x\ne 0)$

@@ -1,4 +1,4 @@
-## singular value decomposition
+# singular value decomposition (L30)
 - $A_{m\times n}=U_{m\times m}\Sigma _{m\times n}V_{n\times n}^T$
 - prefer $A=Q\Lambda Q^{-1}$ orthonormal eigenvectors
 - linear transformation

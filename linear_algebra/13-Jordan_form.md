@@ -1,4 +1,4 @@
-## Jordan form
+# Jordan form (L29)
 1. similarity $\to$ same eigenvalues
 2. same eigenvalues diagonalizable $\sim \Lambda$: small family of similarity: $kI\sim kI$
     > proof: $MkIM^{-1}=kMIM^{-1}=kI$

@@ -1,3 +1,5 @@
+# complex matrices (L27)
+
 ## complex number review
 - $z=a+bi$
 - modulus - the same as complex vector

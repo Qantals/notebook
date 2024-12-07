@@ -82,7 +82,7 @@
 - application - immigration
     - $u_k=(u_{k1},\dots ,u_{kn})$ means original population at time $k$.
     - $A_{n\times n},a_{ij}$ means percentage of $j$ population move to $i$, $a_{ii}$ means percentage of $i$ population stays there $\to \sum _ia_{ij}=1$
-    - stable solution: already known it's stable: $\lim _{k\to \infty}u_k=u_{k-1}=u^*\to Au^*=u^*,\lambda _1=1$ and compute eigenvector $x_1\to u^*=kx_1$, constraint: scalars in $x:\sum _iu_i=\sum _iu^*_i$
+    - stable solution: already known it's stable: $\lim _{k\to \infty}u_k=u_{k-1}=u^*\to Au^*=u^*,\lambda _1=1$ and compute eigenvector $x_1\to u^*=kx_1$, constraint: scalars in $x:u^{(0)}=(u^{(0)}_1,\dots ,u^{(0)}_n),\sum _iu^{(0)}_i=\sum _iu^*_i$ (no birth or death)
 
 ## Fourier series (orthogonal functional basis)
 - $f(x)=a_0+a_1\cos x+b_1\sin x+a_2\cos 2x+\dots$

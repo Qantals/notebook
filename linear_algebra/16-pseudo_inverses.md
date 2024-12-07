@@ -1,11 +1,13 @@
+# pseudo inverses (L34)
+
 ## left / right inverses
 - 2-sided inverse $AA^{-1}=I=A^{-1}A,R(A)=r=m=n$
     - $\dim N(A)=\dim N(A^T)=0$
     - projection $P=I$ (**the relation with $A^+$**: $AA^+A=I,AP=I|PA=A\to$ need $P$ close to $I$)
-- left inverse: column full rank $r=n<m\to (A^TA)_{n\times n}$ is invertable
+- left inverse: full column rank $r=n<m\to (A^TA)_{n\times n}$ is invertable
     - $\dim N(A)=0$, has 0 / 1 solution
     - $(A^TA)^{-1}A^TA=I_{n\times n}=A^{-1}_{\mathrm{left}-n\times m}A_{m\times n}\to A^{-1}_{\mathrm{left}}=(A^TA)^{-1}A^T$
-- right inverse: row full rank $r=m<n\to (AA^T)_{m\times m}$ is invertable
+- right inverse: full row rank $r=m<n\to (AA^T)_{m\times m}$ is invertable
     - $\dim N(A^T)=0,\dim N(A)=n-m$ has $\infty$ solutions
     - $AA^T(AA^T)^{-1}=I_{m\times m}=A_{m\times n}A^{-1}_{\mathrm{right}-n\times m}\to A^{-1}_{\mathrm{right}}=A^T(AA^T)^{-1}$
 
