@@ -26,7 +26,8 @@
         > proof: $Ax=0,A=(a_1,\dots ,a_n),(a_1,Ax)=\sum (a_1,x_1a_1)+\dots +(a_1,x_na_n)=(a_1,x_1a_1)+0+\dots +0=x_1\| a_1 \|^2=a_1^TAx=a_1^T0=0\to x_1=0$, similarly, $(a_i,Ax)=0\to x_i=0\dots (A^TAx=\vec{0})\to x=0$ only has zero solution.
     - easily computational cofficients: $Ax=b$, get cofficients of $b$ is $x_i=\frac{a_i^Tb}{\| a_i \|^2}$ i.e. inner product $\Leftrightarrow$ projection.
         > proof: $A^TAx=A^Tb=\Lambda x$ where $\Lambda=\text{diag}(\| a_1 \|^2 ,\dots ,\| a_n \|^2)$, so for each row $\| a_i \|^2 x_i=a_i^Tb$ only need one inner product.
-- orthogonal subspace: $S\perp T$ is every vector in $S\perp $ every vectors in $T$
+- orthogonal subspace: $S\perp T\Leftrightarrow \forall s\in S,\forall t\in T,s\perp t$
+    - vector orthogonal to space: $s\perp T\Leftrightarrow \forall t\in T,s\perp t$
     - $S\cap T=$ line: not orthogonal, becasue $\exists $ vectors in this line in both $S,T$.
     - orthogonal vector set: $S=(s_1,\dots ,s_s),T=(t_1,\dots ,t_t)\to S^TT=0$
     - $\perp$ vector set to span space: if $S^TT=0\to S\perp T$
@@ -34,7 +35,9 @@
 - four subspaces
     - $C(A^T)\perp N(A)$ in $\mathbb{R^n}$
     - $C(A)\perp N(A^T)$ in $\mathbb{R^m}$
-    > proof: $Ax=0$, every row in $A$ inner product $x=0$; the same as $A^Ty=0$.
+    - they are all orthogonal complement (e.g. $C(A^T)=\{\alpha |\alpha \perp N(A),\alpha \in \mathbb{R^n}\}\to C(A^T)=N(A)^{\perp}$)
+    > proof: $Ax=0$, every row in $A$ inner product $x=0$; the same as $A^Ty=0$.  
+    > orthogonal complement: $\dim C(A^T)+\dim N(A)=r+n-r=n\to \dim \mathbb{R^n}=n$
 
 ## least squares
 - $Ax=b$ when $m>n$ (measuring) may not have a solution, but **normal equation** $A^TA\hat{x}=A^Tb$ have.
@@ -98,6 +101,6 @@
     - $b_1=a_1,b_2=a_2-\frac{b_1^Ta_2}{b_1^Tb_1}b_1,q_1=\frac{b_1}{\| b_1 \|},q_2=\frac{b_2}{\| b_2 \|}$
         > proof: $b_1^Tb_2 =b_1 ^Ta_2-b_1 ^Ta_2=0$
     - $b_3 =a_3-\frac{b_1 ^Ta_3}{b_1 ^Tb_1}b_1-\frac{b_2 ^Ta_3}{b_2 ^Tb_2 }b_2, q_3=\frac{b_3}{\| b_3 \|}$
-- decomposition $A=QR$: $Q^TA=Q^TQR=R=\begin{bmatrix} a_1^Tq_1 & a_2^Tq_1 \\ a_1^Tq_2 & a_2^Tq_2 \end{bmatrix}$.
-    - $a_i^Tq_j=0(i<j)$
+- decomposition $A=QR$: $R=Q^{-1}A=Q^TA=\begin{bmatrix} a_1^Tq_1 & a_2^Tq_1 \\ a_1^Tq_2 & a_2^Tq_2 \end{bmatrix}$.
+    - $a_i^Tq_j=0,\forall i<j$
     - $R$ is easy to compute due to conclusion $x_i=q_i^Ta_j$ above.

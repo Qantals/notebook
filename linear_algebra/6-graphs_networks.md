@@ -1,24 +1,4 @@
-# examples (L11, L12, L13)
-
-## matrix space (see matrix as vectors)
-- subspace $M_{3\times 3}$, $\dim M=9$
-- upper triangles, $\dim U=6$
-- symmetric matrices, $\dim S=6$
-    - $S\cap U$: diagonal matrices, $\dim D=3$
-    - $S+U=M$ (not union): linear combination of any $S$ and $U$
-    - $\dim (S+U)+\dim (S\cap U)=\dim S+\dim U$
-
-## rank one matrices
-- decomposition: $A=uv^T$ where $u,v$ are column vectors.
-- construction: $\mathrm{rank}=4$ matrix is linear combination of some $\mathrm{rank}=1$ matrices.
-- same rank matrices:
-    - suppose $M$ is rank 4 metrices of all $5\times 17$ metrices
-    - $\to M$ is not a subset (not closure): $R(A+B)\le R(A)+R(B)$
-- transformation using $Ax=0$:
-    - suppose $S=\{\vec{v}_{4\times 1}|v_1+v_2+v_3+v_4=0\}$, is $S$ a space?
-    - $A_{1\times 4}=[1\ 1\ 1\ 1]\to S=N(A)$
-    - $R(A)=1,\dim N(A)=n-r=3$
-    - $C(A)=\mathbb{R^1},N(A^T)=\vec{0}, \dim N(A^T)=m-r=0$
+# graphs and networks (L12, L13)
 
 ## graphs & networks
 > directed graph = {nodes=n=4, edges=m=5}

@@ -6,10 +6,6 @@
 - row picture: draw two lines and get the cross point solution
 - column picture: $x_1\times a_1 + x_2\times a_2=\vec{b}$, where $a_i$ is column vector of $A$.
 - column picture is better in high dimension.
-- linear mapping: $Ax=y=f(x)$ see vector $x$ is mapped to $y$ through $A$.
-    - see eigenvectors.
-    - map a line to a line for $A_{2\times 2}$ condition.
-- rotation: $A=\begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}$, $y=Ax$ rotate vector $x$ to $y$ rotate counterclockwise $\theta$.
 
 ## matrix multiplication
 - $Ax=b$ 右乘列
@@ -25,3 +21,4 @@
     - ~ is group of inner product between $A$ row vector set and $B$ column vector set.
     - $c_{ij}=\sum _ka_{ik}b_{kj}$
     - spectural theorem: $C=\sum _ia_{i}b_{i}+\dots$ is column vector $a_i$ multiply row vector $b_i$.
+        - like $A=vv^T$ is row vector multiply column vector

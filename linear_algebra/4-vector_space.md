@@ -1,19 +1,4 @@
-# vector space (L5, L6, L9, L10)
-
-## vector space basis
-- definition: all vectors in a space require closure to linear operation (still in this space)
-- example: $\mathbb{R^2}$ is ~, compose to a plane. $\mathbb{R^n}$ space has all n-dimension vectors, each has n scalars in $\mathbb{R}$
-- zero vector: any vector scalar multiply zero is zero vector, so it must be contained in any space.
-- subspace of $\mathbb{R^3}$ has:
-    1. P: plane across origin(common plane)
-    2. L: line across origin(common line)
-    3. origin
-- operation on subspace is subspace?
-    - union: No. example: $P\cup L\ (L\subsetneq P)$ is not a vector space
-    - intersection: Yes. example: $P\cap L\ (L\subsetneq P)$ is a vector space.
-- state space
-    - $x_1(t),\dots ,x_n(t)$ system state variables
-    - $X=(x_1(t),\dots)$ system state vector
+# vector space (L6, L9, L10)
 
 ## rank
 - obvious
@@ -47,7 +32,7 @@
     - independence $\Leftrightarrow N(A)=\vec{0}\Leftrightarrow R(A)=n\Leftrightarrow \det A\ne 0$ (if $A_{n\times n}$)
     - dependence $\Leftrightarrow \dim N(A)\ge 1 \Leftrightarrow R(A)<n\Leftrightarrow \det A=0$ (if $A_{n\times n}$)
     - $\vec{0}$ is dependent with other non-zero vectors (cofficient on $\vec{0}\ne 0$)
-- dependence and dim: $\#\ge(n+1)$ vectors in $\mathbb{R^n}$ must be dependent $\Leftrightarrow A_{m\times n}(m<n), R(C(A))=R(A)\le m<n$
+- dependence and dim: $\#\ge(n+1)$ vectors in $\mathbb{R^n}$ must be dependent $\Leftrightarrow A_{m\times n}(m<n),\dim C(A)=R(A)\le m<n$
     - $\Leftrightarrow$ any independent vector set in $\mathbb{R^n}$ has no more than $\#n$ vectors.
 - subset
     - any maximal linearly independent subset in a vector set is equivalent, and equivalent to the whole vector set.
@@ -56,7 +41,6 @@
     - $\Leftrightarrow$ otherwise $r>s\to A_{m\times r}$ is dependent
     - $\Leftrightarrow$ $R(A)\le R(B)$ whether $A,B$ is independent or not
         > proof: check and compare maximal linearly independent subset
-- basis: dimension of maximal linearly independent subset span space equals to vector dimension.
 
 ## four fundamental subspaces
 - column space: $C(A)=Ax$ for all $x$
