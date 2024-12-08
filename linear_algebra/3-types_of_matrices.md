@@ -60,19 +60,23 @@
     - Multiplication of any two matrices from this group still in this group (closure).
 
 ## relationships of matrices
-- equivalence, contract and similarity have properties:
+- equivalence, congruence and similarity have properties:
     1. reflexivity: $A\cong A$
     2. symmetry: $A\cong B\Rightarrow B\cong A$
     3. transitivity: $A\cong B,B\cong C\Rightarrow A\cong C$
 - equivalence: $A_{m\times n}\cong B_{m\times n}\Leftrightarrow A=PBQ$ where $P$ and $Q$ is invertable.
     - $\Leftrightarrow R(A)=R(B)$
         > proof: equivalent means $B$ can be transformed to $A$ through elementary row and column operation $\to A,B$ has same reduced echelon form.
-- contract: $A=P^TBP$ where $A,B$ are square matrices, and $P$ is invertable.
-    - requires rank and positive / negative inertia index are equivalent.
-- similarity: $A_{n\times n}\sim B_{n\times n}\Leftrightarrow A=P^{-1}BP$ where $A,B$ are square matrices, and $P$ is invertable.
+- similarity: $A_{n\times n}\sim B_{n\times n}\Leftrightarrow A=P^{-1}BP$ where $P$ is invertable.
     > prove transitivity: $B=P^{-1}AP\to C=Q^{-1}BQ=Q^{-1}P^{-1}APQ=(PQ)^{-1}A(PQ)$
     - $\Rightarrow A\cong B\Rightarrow R(A)=R(B)$
     - $\Rightarrow \lambda _{A}=\lambda _{B}, x_A\ne x_B$ ($\Rightarrow \det A=\det B, \text{tr}(A)=\text{tr}(B)$)
         > proof1: $\det (\lambda I-B)=\det (\lambda I-P^{-1}AP)=\det (P^{-1}(\lambda I-A)P)=\det P^{-1}\det (\lambda I-A)\det P=\det (\lambda I-A)$  
         > proof2: (can see change of eigenvectors) $Ax=\lambda x\to P^{-1}BPx=\lambda x\to B(Px)=\lambda (Px)$ share the same $\lambda$
     - usage: $\sim$ diagonal eigenvalues $\Lambda$ or Jordan form
+- congruence: $A_{n\times n}=P^TB_{n\times n}P$ where $P$ is invertable.
+    - $\Rightarrow A\cong B\Rightarrow R(A)=R(B)$
+    - $\Rightarrow$ positive / negative inertia index are equivalent.
+        > proof: invertable linear transformation keep the basic information of quadratic form
+    - usage: invertable linear transformation keep definite property.
+    - $A$ is symmetric $\Rightarrow A$ is similar and congruent to $\Lambda$

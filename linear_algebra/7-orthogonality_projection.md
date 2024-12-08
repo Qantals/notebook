@@ -47,8 +47,8 @@
     - $R(A^TA)=R(A)$
         > proof: from 1: $\dim N(A)=\dim N(A^TA)\to n-R(A)=n-R(A^TA)$
     - $R(A)=n\to A^TA$ is invertable
-    - $A^TA$ is positive semidefinite matrix
-        > proof: $x^TA^TAx=(Ax)^TAx=\| Ax \|\ge 0$
+    - $A^TA$ is positive semidefinite matrix, $R(A)=n\Rightarrow >0$
+        > proof: $x^TA^TAx=(Ax)^TAx=\| Ax \|\ge 0,R(A)=n\to >0$
     - $\det A^TA\ne \det AA^T$ for $A_{m\times n},m\ne n$
 
 ## orthogonal projection

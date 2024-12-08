@@ -6,7 +6,8 @@
     - $z\bar{z}=|z|^2=a^2+b^2$
     - $z\bar{z}=1\Leftrightarrow |z|=1\Leftrightarrow \bar{z}=\frac{1}{z}$
     - $||z_1|-|z_2||\le |z_1\pm z_2|\le |z_1|+|z_2|$ (triangle inequality)
-        > proof: see $z_i=(a_i,b_i)^T\in \mathbb{R^2}$ as vector, and $a_i,b_i$ are coefficients of basis $(1,i)^T$
+        > proof: for addition computation: see $z_i=(a_i,b_i)^T\in \mathbb{R^2}$ as vector, and $a_i,b_i$ are coefficients of basis $(1,i)^T$  
+        > left side is equivalent to right side (move terms to other side of inequality), $\pm$ in center is killed by absolute value of left and right (put to $z_2$).
     - $|z_1z_2|=|z_1||z_2|$
         > proof: $|z_1z_2|^2=(z_1z_2)(\overline{z_1z_2})=z_1z_2\bar{z_1}\bar{z_2}=|z_1|^2|z_2|^2$
 - conjugate

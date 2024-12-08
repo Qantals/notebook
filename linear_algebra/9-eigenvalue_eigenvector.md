@@ -85,4 +85,4 @@
     - spectral theorem: every symmetric matrix is a combination of orthogonal projection matrices (relative to oblique projection).
         - $A=\lambda _1q_1q_1^T+\dots +\lambda _nq_nq_n^T$ (another perspective of matrix multiplication)
         - $P=\frac{qq^T}{q^Tq}=qq^T, P^T=P,P^n=P$
-- ** #signs of pivots (through elimination) are the same as #signs of eigenvalues (to judge stability of power)
+- useful in quadratic form: use index of positive inertia to judge power stability

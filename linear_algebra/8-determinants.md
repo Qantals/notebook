@@ -59,14 +59,33 @@
     > proof: expand $\det B_j$ with column $j$: row $j$ of $C^T$ means column $j$ of $C$, then replace $A_{\_ j}$ with $b$
 - computation is very expensive.
 
-## volume(geometry significance)
-- row vectors of three base edges make up of a matrix $A,|\det A|$ is the volume of parallel hexahedron 平行六面体.
-- proof:
-    - determinant property 1: $A=Q,\det Q=\pm 1$ (proof: $QQ^T=I\to \det QQ^T=(\det Q)^2=1$)
-    - property 2: exchange rows doesn't change volume.
-    - property 3a: $\lambda$ times of one row, the volume and determinant increase the same size $\lambda$.
-    - property 3b: parallelogram 平行四边形, 2-dim example:$(a,b),(c,d),(0,0),(a+c,b+d)$. $\begin{vmatrix}a+a' & b+b' \\ c & d\end{vmatrix}=\begin{vmatrix}a & b \\ c & d\end{vmatrix}+\begin{vmatrix}a' & b' \\ c & d\end{vmatrix}$ then switch det to area to prove.
-- area of parallelogram=$\det [a\ b;c\ d]$
-- area of triangle=$\frac{1}{2}\det [a\ b;c\ d]$(see the law of sinces)
-- triangle: $(x_1,y_1),(x_2,y_2),(x_3,y_3)$. $A=\begin{bmatrix} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \\ x_3 & y_3 & 1 \end{bmatrix}$. illustration: subtract row_1 from other rows means goes back to origin and has two point like (a,b) and (c,d), then expand along third column.
-> *outer product wait for illustration from book*.
+## volume (geometry significance)
+- outer product
+    - $\| a\times b\|=\| a\| \| b\| \sin \langle a,b\rangle$
+    - right-hand rule: $a\times b\perp a,b$
+    - $a\times a=0,a\times 0=0$
+    - $a\times b=-b\times a$ careful with order
+    - $(\lambda a)\times (\mu b)=\lambda \mu (a\times b)$
+    - $a\times (b+c)=a\times b+a\times c$
+- outer product of basis
+    - $i\times i=j\times j=k\times k=0$
+    - $i\times j=k,\ j\times k=i,\ k\times i=j$
+- outer product with basis
+    - $a\times b=\begin{vmatrix}i & j & k \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix}$
+    - $S_{\triangle}=\frac{1}{2}\| a\| \| b\|\sin \theta=\frac{1}{2}\| a\times b\|$
+    - $S_{\Box}=2S_{\triangle}=\| a\times b\|$
+- mixed product
+    - $(a\times b)\cdot c=(b\times c)\cdot a=(c\times a)\cdot b$
+    - $(a\times b)\cdot (\lambda c_1+\mu c_2)=\lambda (a\times b)\cdot c_1+\mu (a\times b)\cdot c_2$
+    - $[a\ b\ c]=0\Leftrightarrow a,b,c\ne 0$ on a common plane
+- mixed product with basis
+    - $(a\times b)\cdot c=[a\ b\ c]=\begin{vmatrix}a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix}=\det A$
+    - parallel hexahedron 平行六面体: $V=|\det A|=\| a\times b\| \| c\| |\cos \theta|=|(a\times b)\cdot c|$
+    > computed by determinant: check  
+    > determinant property 1: $A=Q\to \det Q=\pm 1$ (proof: $QQ^T=I\to \det QQ^T=(\det Q)^2=1$)  
+    > property 2: exchange rows doesn't change volume.  
+    > property 3a: $\lambda$ times of one row, the volume and determinant increase the same size $\lambda$.  
+    > property 3b: parallelogram 平行四边形, 2-dim example:$(0,0),(x_1,y_1),(x_2,y_2),(x_1+x_2,y_1+y_2)\to S=\begin{vmatrix}x_1 & y_1 \\ x_2 & y_2\end{vmatrix}$.  
+    > $\begin{vmatrix}x_1+x_3 & y_1+y_3 \\ x_2 & y_2\end{vmatrix}=\begin{vmatrix}x_1 & y_1 \\ x_2 & y_2\end{vmatrix}+\begin{vmatrix}x_3 & y_3 \\ x_2 & y_2\end{vmatrix}$ is additive (details are complex).
+- triangle (with shift to origin): $(x_1,y_1),(x_2,y_2),(x_3,y_3)$. $A=\begin{bmatrix} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \\ x_3 & y_3 & 1 \end{bmatrix}\to S=\frac{1}{2}|\det A|$.
+    - illustration: $S=\frac{1}{2}\begin{vmatrix}x_1 & y_1 & 1 \\ x_2-x_1 & y_2-y_1 & 0 \\ x_3-x_1 & y_3-y_1 & 0\end{vmatrix}=\frac{1}{2}\begin{vmatrix}x_2-x_1 & y_2-y_1 \\ x_3-x_1 & y_3-y_1\end{vmatrix}$.
