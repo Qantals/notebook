@@ -82,39 +82,35 @@
     - meet 8 rules like linear space
     - like operation of matrices: relationship with matrices!
 - w.r.t. matrices
-    - basis $\alpha _{n\times n}=(\alpha _1,\dots ,\alpha _n)$ and $\alpha _i,T(\alpha _i)$ are $n\times 1$ column vectors
-    - formula: $T(\alpha _1,\dots ,\alpha _n)_{n\times n}=(T(\alpha _1),\dots ,T(\alpha _n))=(\alpha _1,\dots ,\alpha _n)S\to T(\alpha)=\alpha S_{n\times n}$
-    - explain: $T(\alpha _j)=\sum _is_{ij}\alpha _i$ each column of $S$ is response to one original basis
-    - coordinate: $c_{\mathrm{out}}=Sc_{\mathrm{in}}$, **both $c_{\mathrm{in}},c_{\mathrm{out}}$ are under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$**
-        > note: careful with formulas with basis representation and coordinate representation. In practice use coordinate to calculate.
+    - basis $\alpha _{n\times n}=(\alpha _1,\dots ,\alpha _n)$, $\alpha _{i-n\times 1}$
+    - formula: $T(\alpha)_{n\times n}=(T(\alpha _1),\dots ,T(\alpha _n))=\alpha A$
+    - explain: $T(\alpha _j)_{n\times 1}=\sum _ia_{ij}\alpha _i$ each column of $A$ is response to one original basis
+    - coordinate: $v_{\mathrm{out}}=T(\alpha c_{\mathrm{in}})=T(\alpha)c_{\mathrm{in}}=\alpha Ac_{\mathrm{in}}=\alpha c_{\mathrm{out}}\Rightarrow c_{\mathrm{out}}=Ac_{\mathrm{in}}$
     - $T_1$ is invertable $\Leftrightarrow A$ is invertable
     - uniqueness: linear transformation has unique corresponding matrix under one basis
-        > illustration: $T(\alpha _j)$ has coordinate column vector $s_j$ under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$
+        > illustration: $T(\alpha _j)$ has coordinate column vector $a_j$ under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$
 - under different basis
-    - $\beta =\alpha P\to T(\beta)=T(\alpha)P$ (proof: $T(\alpha),T(\beta)$ is coordinate under basis $\alpha ,\beta$ separately)
-    - $\beta =\alpha P$ is change of basis, $T:\alpha \to A,T:\beta \to B\Rightarrow B=P^{-1}AP$ is similar, and transition matrix is just invertable matrix in similarity.
+    - $\beta =\alpha P\to T(\beta)=T(\alpha P)=T(\alpha)P$ transition matrix is same for linear transformation
+    - $\beta =\alpha P$ is change of basis, $T:\alpha \to A,T:\beta \to B\Rightarrow B=P^{-1}AP$ is similar, and transition matrix $P$ is just invertable matrix in similarity.
         > proof: $\beta =\alpha S\to T(\beta)=\beta B=\alpha PB=T(\alpha)P=\alpha AP\Rightarrow PB=AP\to B=P^{-1}AP$
-
-## linear mapping
-- linear mapping: $T:V\in \mathbb{R^n}\to W\in \mathrm{R^m}$
-    - linearity: the same as linear transformation
-        > example: matrix multiplication $A$: $T_{2\times 1}(v)=A_{2\times 3}v_{3\times 1}$, $T:\mathbb{R^3}\to \mathbb{R^2}$  
-        > bad example: $T(v)=\| v \|$ so $T:\mathbb{R^3}\to \mathbb{R^1}$ ($c=-1$ issue)  
-- matrices
-    - $V=(v_1,\dots, v_n)$ is orthogonal input basis, $\forall v=Vc_{\mathrm{in}},c_{n\times 1}=(c_1,\dots ,c_n)$ is coordinates.
-    - $W=(w_1,\dots ,w_m)$ is output basis, $\forall w=Wc_{\mathrm{out}},c_{m\times 1}$
-    - rows of $A$ corresponds output basis $W$, columns of $A$ corresponds input basis $V$. i.e. $a_{ij}$ means response $v_j\to w_i$
-        - $w=T(v)=c_{1-\mathrm{in}}T(v_1)+\dots +c_nT(v_n)$
-        - i-th column of $A$ is $T(v_i)=a_{1i}w_1+\dots +a_{mi}w_m\to (a_{1i},\dots ,a_{mi})=c_{\mathrm{out}}$
-        - $\Rightarrow w=T(v)=c_1\sum _ia_{i1}w_1+\dots +c_n\sum _ia_{im}w_m\Rightarrow T:A_{m\times n}c_{\mathrm{in}}=c_{\mathrm{out}}$
-    - inverse of linear transformation is $A^{-1}$ ($Av=w\to v=A^{-1}w$)
 - example: 2-D projection
     - basis is eigenvectors
         - projection matrix is symmetric $\to$ eigenvectors are orthogonal and eigenvalues are 1 or 0 $\to$ corresponding transformation for orthogonal basis is 1 or 0 $\to$ special transformation matrix is diagonal and relative to eigenvalues.
         - projection matrix is symmetric $P=Q\Lambda Q^T,Pq_1=q_1\to \lambda _1=1$ projects to $q_1$
-        - $m=n=2,V=W=Q$
         - $T(Vc)=c_1v_1+c_20\to A=\Lambda =\begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix},T:A(c_1,c_2)^T=(c_1,0)^T$
-    - basis is standard: project onto $45^{\circ}$ line: $V=W=I_{2\times 2},A=P=\frac{aa^T}{a^Ta}=\begin{bmatrix}1/2 & 1/2 \\ 1/2 & 1/2 \end{bmatrix}, a=(1,1)^T$ for $45^{\circ}$ (back to rectangular coordinate case)
+    - basis is standard: project onto $45^{\circ}$ line: $A=P=\frac{aa^T}{a^Ta}=\begin{bmatrix}1/2 & 1/2 \\ 1/2 & 1/2 \end{bmatrix}, a=(1,1)^T$ for $45^{\circ}$ (back to rectangular coordinate case)
+- affine transformation: $T(x_{n\times 1})_{n\times 1}=L(x)+b_{n\times 1},L(x)$ is linear transformation
+
+## linear mapping
+- linear mapping: $T:V\in \mathbb{R^n}\to W\in \mathbb{R^m}$
+    - linearity: the same as linear transformation
+        > example: matrix multiplication $A$: $T_{2\times 1}(v)=A_{2\times 3}v_{3\times 1}$, $T:\mathbb{R^3}\to \mathbb{R^2}$  
+        > bad example: $T(v)=\| v \|$ so $T:\mathbb{R^3}\to \mathbb{R^1}$ ($c=-1$ issue)  
+- matrices
+    - $V_{n\times n}=(v_1,\dots, v_n)$ is input basis, $W_{m\times m}=(w_1,\dots ,w_m)$ is output basis
+    - columns of $A$ is response to each input basis $\in V$. i.e. $v_j\to a_{ij}w_i$
+        - formula: $T(V)_{m\times n}=(T(v_1),\dots ,T(v_n))=W_{m\times m}A_{m\times n}$
+        - coordinate: $w_{m\times 1}=T(v)_{m\times 1}=T(Vc_{\mathrm{in}})=Wc_{\mathrm{out}-m\times 1}=WAc_{\mathrm{in}-n\times 1}=c_{\mathrm{in}-1}\sum _ia_{i1}w_1+\dots +c_{\mathrm{in}-n}\sum _ia_{im}w_m$
 - example: first derivate
     - input $V_{3\times 1}=(1,x,x^2)^T$, output $W_{3\times 1}=(1,x)^T$
     - $c_2+2c_3x=T(c_1+c_2x+c_3x^2)\to Ac_{in}=c_{out}:\begin{bmatrix}0 & 1 & 0 \\ 0 & 0 & 2\end{bmatrix}\begin{bmatrix}c_1 \\ c_2 \\ c_3 \end{bmatrix}=\begin{bmatrix}c_2 \\ 2c_3\end{bmatrix}$
