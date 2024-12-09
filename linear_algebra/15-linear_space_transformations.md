@@ -24,7 +24,7 @@
 - coordinate: $\alpha =a_1\alpha _1+\dots +a_n\alpha _n\to (a_1,\dots ,a_n)$
     - vector calculation is one-to-one corresponds to coordinate calculation: isomorphic 同构
 - change of basis
-    - $\alpha _{n\times n}=(\alpha _1,\dots ,\alpha _n),\alpha '_{n\times n}=(\alpha '_1,\dots ,\alpha '_n)$ are different basis
+    - $\alpha _{n\times n}=(\alpha _1,\dots ,\alpha _n),\alpha '_{n\times n}=(\alpha '_1,\dots ,\alpha '_n)$ are different basis, $\alpha _i$ is column vector.
     - formula: $\alpha '=\alpha S(\alpha '_j=\sum _iS_{ij}\alpha _i)\to S_{n\times n}$ is transition matrix
     - $S$ is invertable (proof: $\dim C(S^T)=R(S)=n$, need new basis is independent)
     - transitivity: $\alpha '=\alpha A,\alpha ''=\alpha 'B\Rightarrow \alpha ''=\alpha AB$
@@ -32,10 +32,6 @@
 - change of coordinates
     - $\forall v\in V\to v=\alpha x=\alpha 'x'=\alpha Sx'$ ($x$ is coordinate)
     - $\Rightarrow x=Sx',x'=S^{-1}x$
-<!-- - similarity $A\sim B\Leftrightarrow$ same eigenvalues $\to$ same linear transformation under different basis
-    > proof: $A$ is transformation matrix corresponding $T$ with basis $\alpha$, $B$ is with $\beta$  
-    > $\therefore$ see from basis $\alpha: u=Ax=SBy=SBS^{-1}(Sy)=(SBS^{-1})x\to A=SBS^{-1}$ is similar
-    - $Ax=SBy\Leftarrow R=S\to u=Ax=Sv=S(By)$ see below -->
 
 ## Euclidean space 欧氏空间
 - euclidean space: numerical field $P=\mathbb{R}$ defined inner product
@@ -80,48 +76,30 @@
     - identity transformation: $T(a)=1a=a$
 - invertable transformation: one-to-one mapping in $V$, vice versa
 - operation
-    - addition: $(T_1+T_2)a=T_1(a)+T_2(a)$
-    - scalar multiplication: $(kT_1)a=kT_1(a)$
-    - multiplication: $(T_1T_2)a=T_1(T_2(a))\ne T_2(T_1(a))$
+    - addition: $(T_1+T_2)a=T_1(a)+T_2(a)=a(A+B)$
+    - scalar multiplication: $(kT_1)a=kT_1(a)=kaA$
+    - multiplication: $(T_1T_2)a=T_1(T_2(a))=aAB\ne T_2(T_1(a))=aBA$
     - meet 8 rules like linear space
     - like operation of matrices: relationship with matrices!
 - w.r.t. matrices
     - basis $\alpha _{n\times n}=(\alpha _1,\dots ,\alpha _n)$ and $\alpha _i,T(\alpha _i)$ are $n\times 1$ column vectors
-    - formula: $T(\alpha _1,\dots ,\alpha _n)_{n\times n}=(T(\alpha _1),\dots ,T(\alpha _n))=(\alpha _1,\dots ,\alpha _n)S\to T(\alpha)=\alpha S$
+    - formula: $T(\alpha _1,\dots ,\alpha _n)_{n\times n}=(T(\alpha _1),\dots ,T(\alpha _n))=(\alpha _1,\dots ,\alpha _n)S\to T(\alpha)=\alpha S_{n\times n}$
     - explain: $T(\alpha _j)=\sum _is_{ij}\alpha _i$ each column of $S$ is response to one original basis
-    - coordinate: $c_{\mathrm{new}}=Sc_{\mathrm{old}}$ under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$
-    - operation
-        - $T_1+T_2\Leftrightarrow A+B$
-        - $kT_1\Leftrightarrow kA$
-        - $T_1T_2\Leftrightarrow AB$
-        - $T_1$ is invertable $\Leftrightarrow A$ is invertable
+    - coordinate: $c_{\mathrm{out}}=Sc_{\mathrm{in}}$, **both $c_{\mathrm{in}},c_{\mathrm{out}}$ are under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$**
+        > note: careful with formulas with basis representation and coordinate representation. In practice use coordinate to calculate.
+    - $T_1$ is invertable $\Leftrightarrow A$ is invertable
     - uniqueness: linear transformation has unique corresponding matrix under one basis
         > illustration: $T(\alpha _j)$ has coordinate column vector $s_j$ under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$
-- $\beta =\alpha P\to T(\beta)=T(\alpha)P$ transition matrix of change of basis is the same as that of linear transformation under different basis
-    > proof: coordinate of $v\in V:\alpha :x_{n\times 1},\beta :y_{n\times 1}$  
-    > $\to x=Py$, coordinate of transformation: $\alpha :Ax,\beta :By$  
-    > $\to Ax=(AP)y$
-- under different basis: $\beta =\alpha P$ is change of basis, $T:\alpha \to A,T:\beta \to B\Rightarrow B=P^{-1}AP$ is similar
-    > proof: $\beta =\alpha P\to T(\beta)=\beta B=T(\alpha)P$  
-    > $T(\beta)=\beta B=\alpha PB=T(\alpha)P=\alpha AP$
-
-
-
-
-
-
+- under different basis
+    - $\beta =\alpha P\to T(\beta)=T(\alpha)P$ (proof: $T(\alpha),T(\beta)$ is coordinate under basis $\alpha ,\beta$ separately)
+    - $\beta =\alpha P$ is change of basis, $T:\alpha \to A,T:\beta \to B\Rightarrow B=P^{-1}AP$ is similar, and transition matrix is just invertable matrix in similarity.
+        > proof: $\beta =\alpha S\to T(\beta)=\beta B=\alpha PB=T(\alpha)P=\alpha AP\Rightarrow PB=AP\to B=P^{-1}AP$
 
 ## linear mapping
-<!-- - expansion to $m\ne n$
-    - $T:V\in \mathbb{R^n}\to W\in \mathbb{R^m}$
-    - $V\in \mathbb{R^n}:\alpha \to \beta:\beta =\alpha S_{n\times n},x=Sy$
-    - $W\in \mathbb{R^m}:\gamma \to \delta:\gamma =\delta R_{m\times m},u=Rv$
-    - $w=T(v)=\gamma u=\delta v$
-    - $u=Ax,v=By=BS^{-1}Sy=BS^{-1}x=R^{-1}u=R^{-1}Ax\to R^{-1}A=BS^{-1},B=R^{-1}AS$ -->
-
-> example: matrix multiplication $A$: $T_{2\times 1}(v)=A_{2\times 3}v_{3\times 1}$, $T:\mathbb{R^3}\to \mathbb{R^2}$  
-> bad example: $T(v)=\| v \|$ so $T:\mathbb{R^3}\to \mathbb{R^1}$ ($c=-1$)  
-
+- linear mapping: $T:V\in \mathbb{R^n}\to W\in \mathrm{R^m}$
+    - linearity: the same as linear transformation
+        > example: matrix multiplication $A$: $T_{2\times 1}(v)=A_{2\times 3}v_{3\times 1}$, $T:\mathbb{R^3}\to \mathbb{R^2}$  
+        > bad example: $T(v)=\| v \|$ so $T:\mathbb{R^3}\to \mathbb{R^1}$ ($c=-1$ issue)  
 - matrices
     - $V=(v_1,\dots, v_n)$ is orthogonal input basis, $\forall v=Vc_{\mathrm{in}},c_{n\times 1}=(c_1,\dots ,c_n)$ is coordinates.
     - $W=(w_1,\dots ,w_m)$ is output basis, $\forall w=Wc_{\mathrm{out}},c_{m\times 1}$
@@ -140,9 +118,6 @@
 - example: first derivate
     - input $V_{3\times 1}=(1,x,x^2)^T$, output $W_{3\times 1}=(1,x)^T$
     - $c_2+2c_3x=T(c_1+c_2x+c_3x^2)\to Ac_{in}=c_{out}:\begin{bmatrix}0 & 1 & 0 \\ 0 & 0 & 2\end{bmatrix}\begin{bmatrix}c_1 \\ c_2 \\ c_3 \end{bmatrix}=\begin{bmatrix}c_2 \\ 2c_3\end{bmatrix}$
-
-
-
 
 ## application: compression of images
 - image: $A_{512\times 512}\to x\in \mathbb{R^{512\times 512}}$ one vector represents whole image
