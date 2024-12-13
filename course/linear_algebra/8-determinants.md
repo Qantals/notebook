@@ -41,7 +41,7 @@
 ## calculation
 - normal: use property 3 for Gauss elimination and property 7 multiply diagonal elements.
 - common practice
-    - tridiagonal matrix(三对角矩阵): diagonal and sub-diagonal has elements $d,u,l$, others are zero. $\det A_n=d\det A_{n-1}-ul\det A_{n-2}$ (proof: expand with row 1)
+    - tridiagonal matrix(三对角矩阵): diagonal and sub-diagonal has elements $d,u,l$, others are zero. $\det A_n=d\det A_{n-1}-ul\det A_{n-2}$ (proof: expand with row 1). Then use recurrence form with eigenvalue to solve.
     - Vandermonde determinant: $V_n=\begin{vmatrix}1 &\dots & 1 \\ x_1 & \dots & x_n \\ \dots \\ x_1^{n-1} & \dots & x_n^{n-1}\end{vmatrix}=\prod_{1\le j \le i \le n}(x_i-x_j)$
         > proof: subtract row $i-1$ times $x_1$ from row $i$ and $i$ starts from $n$ to 1, and get $V_n=(x_2-x_1)\dots (x_n-x_1)\det V_{n-1}$, using recursion.
 

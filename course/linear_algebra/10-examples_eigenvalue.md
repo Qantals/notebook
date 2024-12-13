@@ -17,8 +17,9 @@
 - immigration example: seen Markov matrices.
 - Fibonacci example
     - $F_{k+1}=F_{k}+F_{k-1}\to A=\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix},u_k=(F_{k+1},F_k)^T, u_0=(1,0)^T$. computation is quick through eigenvectors.
-    - $F_{100}=u_{100_2}=c_1\lambda _1^{100}x_1+c_2\lambda _2^{100}x_2$
+    - $F_{100}=u_{100_2}=c_1\lambda _1^{100}x_{1_2}+c_{2}\lambda _2^{100}x_{2_2}$
     - approximate: $\lambda _2=\frac{1-\sqrt{5}}{2}\approx-0.618,\lambda _1=\frac{1+\sqrt{5}}{2}\approx 1.618>1,x_1=(\lambda _1,1)^T,c_1=\frac{1}{\sqrt{5}}\to u_{100}\approx \frac{1}{\sqrt{5}}(\frac{1+\sqrt{5}}{2})^{100}\to \frac{F_{k+1}}{F_k}\approx \lambda _1\approx \frac{1+\sqrt{5}}{2}$ is golden mean.
+    - directly: from $F_{k+1}=F_{k}+F_{k-1}\to \lambda ^2=\lambda +1,F_{k}=\begin{cases}c_1\lambda _1^n+c_2\lambda _2^n & (\lambda _1\ne \lambda _2) \\ (c_1+nc_2)\lambda ^n & (\lambda _1=\lambda _2)\end{cases}$
 - one-step 2nd order difference equations example
     - suppose system is steady as $t$ increases: $y''+y=0\to u=(y,y')^T=(\cos t,-\sin t)^T$ construct a circle
     - $U_n=(Y_n,Z_n)^T, Y_n$ is difference term of $y$ and $Z_n$ is difference of $y'$
