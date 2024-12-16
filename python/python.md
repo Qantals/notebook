@@ -451,6 +451,8 @@ tuple元组
         - 所有实例中共享，可通过实例或类调用
         - 在方法里`Student.info`而不是`self.info`
         - 和实例属性重名则用实例属性覆盖，直到被删除
+    - 类方法 @classmethod (cls)
+    - 静态方法 @staticmethod ()
 4. 匿名对象：`Student().fun` 使用一次就释放
 5. `__slot__`限制实例属性范围：类属性`__slots__ = ('var1','var2')`否则发生AttributeError异常
 6. 内部类：

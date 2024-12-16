@@ -31,7 +31,7 @@
     - $A_{n\times n}$ has $n$ eigen values (allow repetition: degenerate matrix)
         > proof: from **fundamental theorem of algebra**, $f_A(\lambda)$ is $n$-order has $n$ roots in complex space.
     - forms
-        - factorization: $f_A(\lambda )=a_n(\lambda -\lambda _1)\dots (\lambda -\lambda _n)=a_n(\lambda -\lambda _1)^{k_1}\dots (\lambda -\lambda _r)^{k_r}$
+        - factorization: $f_A(\lambda )=a_n(\lambda -\lambda _1)\dots (\lambda -\lambda _n)=a_n(\lambda -\lambda _1)^{k_1}\dots (\lambda -\lambda _r)^{k_r}$ ($r$ is not rank)
         - expansion: $f_A(\lambda )=a_n\lambda ^n+a_{n-1}\lambda ^{n-1}+\dots +a_1\lambda +a_0$
         - determinants: $f_A(\lambda )=\det (\lambda I-A)$
     - Vieta theorem

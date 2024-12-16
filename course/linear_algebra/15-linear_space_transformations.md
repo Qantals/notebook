@@ -90,7 +90,7 @@
     - uniqueness: linear transformation has unique corresponding matrix under one basis
         > illustration: $T(\alpha _j)$ has coordinate column vector $a_j$ under basis $\alpha =(\alpha _1,\dots ,\alpha _n)$
 - under different basis
-    - $\beta =\alpha P\to T(\beta)=T(\alpha P)=T(\alpha)P$ transition matrix is same for linear transformation
+    - $\beta =\alpha P\to T(\beta)=T(\alpha P)=T(\alpha)P$ transition matrix is same for **linear** transformation
     - $\beta =\alpha P$ is change of basis, $T:\alpha \to A,T:\beta \to B\Rightarrow B=P^{-1}AP$ is similar, and transition matrix $P$ is just invertable matrix in similarity.
         > proof: $\beta =\alpha S\to T(\beta)=\beta B=\alpha PB=T(\alpha)P=\alpha AP\Rightarrow PB=AP\to B=P^{-1}AP$
 - example: 2-D projection

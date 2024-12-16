@@ -28,9 +28,16 @@
 - $z=(z_1,\dots ,z_n)^T\in \mathbb{C^n}$
 - modulus: $\langle z,z \rangle=\bar{z}^Tz=z^Hz= \| z \|^2=\sum _i|z_i|^2$ so it is non-negative
 - inner product: $\langle x,y\rangle =x^Hy=\overline{y^Hx}=\overline{\langle y,x\rangle}$
-    > proof: $(\bar{x}y)(x\bar{y})=x\bar{x}y\bar{y}=|x|^2|y|^2,a\bar{a}=|a|^2\to \bar{x}y=\overline{x\bar{y}}$
+    > another proof: $(\bar{x}y)(x\bar{y})=x\bar{x}y\bar{y}=|x|^2|y|^2,a\bar{a}=|a|^2\to \bar{x}y=\overline{x\bar{y}}$
 - complex symmetric (Hermitian matrix): $\bar{A}^T=A\to A^H=A$.
-- orthogonal: $\langle q_i,q_j\rangle =q^H_iq_j= \begin{cases} 0(i\ne j) \\ 1(i=j) \end{cases}\to Q^HQ=I\to $ unitary matrix $Q$ 酉矩阵
+    - quadratic form is real (and Hermitian)
+        > proof: $(x^HAx)^H=x^HA^Hx=x^HAx$
+    - eigenvalues are real
+        > proof: $Ax=\lambda x\to \lambda x^Hx=x^HAx$ is real (from above), $x^Hx=\| x\|^2$ is real $\to \lambda$ is real.
+    - eigenvectors of different eigenvalues are orthogonal
+        > proof: $Ax_1=\lambda _1x_1,Ax_2=\lambda _2x_2\to (Ax_1)^Hx_2=\lambda _1x_1^Hx_2=x_1^HAx_2=x_1^H\lambda _2x_2\to (\lambda _1-\lambda _2)x_1^Hx_2=0\to x_1^Hx_2=0$ ($\bar{\lambda }_1=\lambda _1,A^H=A$)
+    - $\Rightarrow$ can be diagonalized $A=Q\Lambda Q^{-1}=Q\Lambda Q^H=\sum _i^n\lambda _iq_iq_i^H$ 
+- orthonormal: $\langle q_i,q_j\rangle =q^H_iq_j= \begin{cases} 0(i\ne j) \\ 1(i=j) \end{cases}\to Q^HQ=I\to $ unitary matrix $Q$ 酉矩阵
 
 ## FFT example
 - unit root (in unit circle)

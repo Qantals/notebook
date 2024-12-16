@@ -9,5 +9,7 @@
     - diagonal are all $\lambda _i$, upper diagonal are all 1, others are all 0.
     - means many same one eigenvalue $\lambda _i$
 - Jordan theorem: $\forall A_{n\times n}\sim J=\mathrm{diag}(J_1,\dots ,J_d)$
-    - #blocks = #eigenvalues = $d$
-    - diagonalizable: $J=\Lambda$
+    - #blocks ($d$) = #independent eigenvectors
+        - diagonalizable $\Leftrightarrow J=\Lambda \Leftrightarrow d=n$
+    - #Jordan blocks for one eigen value = $\dim (\lambda _iI-A)$ = geometry multiplicity
+    - sum of order of all Jordan blocks of an eigenvalue = algebratic multiplicity
