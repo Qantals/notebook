@@ -9,8 +9,9 @@
     - non-negative: $\| x \| \ge 0$ if and only $x=0$ meets equal sign.
     - homogeneity: $\| kx \| =|k|\| x \|$
         > proof: $(kx,kx)=k^2(x,x)\to \| kx \|=\sqrt{k^2} \| x \|\ge 0$
-    - triangle inequality: $\| x+y \| \le \| x \| + \| y \|$ (the same as Cauchy-Schwarz meets equal sign when $x,y$ is dependent)
-        > proof: $\| x+y \|^2=(x+y,x+y)=(x,x)+(y,y)+2(x,y)$ and $2(x,y)\le 2\sqrt{(x,x)(y,y)}$ from Cauchy-Schwarz inequality $\to \| x+y \|^2 \le \| x \|^2+ \| y \|^2 +2\| x \| \| y \| =(\| x \| +\| y \|)^2$
+    - triangle inequality: $|\| x\| -\| y\| |\le \| x\pm y \| \le \| x \| + \| y \|$ (the same as Cauchy-Schwarz meets equal sign when $x,y$ is dependent)
+        > proof: $\| x+y \|^2=(x+y,x+y)=(x,x)+(y,y)+2(x,y)$ and $2(x,y)\le 2\sqrt{(x,x)(y,y)}$ from Cauchy-Schwarz inequality $\to \| x+y \|^2 \le \| x \|^2+ \| y \|^2 +2\| x \| \| y \| =(\| x \| +\| y \|)^2$  
+        > proof: $\| x\| =\| x-y+y\| \le \| x-y\| +\| y\| \to \| x-y\| \ge \| x\| -\| y\| ,\| x-y\| =\| y-x\| \ge \| y\| -\| x\| \to \| x\pm y\| \ge |\| x\| -\| y\| |$
 - Cauchy-Schwarz inequality
     - in essence is about angle between vectors.
     - $(x,y)^2\le \| x \|^2 \| y \|^2=(x,x)(y,y)$ if and only $x=ky$ linear dependent meets equal sign.
@@ -68,8 +69,10 @@
     - projection matrix: $p=A\hat{x}=A(A^TA)^{-1}A^Tb=Pb$
 - properities of projection matrix
     - $A$ is square matrix $\Rightarrow A$ is invertable (because $A$ is composed of basis) $\Rightarrow P_{m\times m}=I$
-    - $P^T=P$
-    - $P^2=P$
+    - orthogonal projection: $P^T=P$
+        > proof: $\forall x\ne 0,(Px,x-Px)=0=(Px,(I-P)x)=x^TP^T(I-P)x\to 0=P^T(I-P)=P^T-P^TP\to P^T=P^TP,P=(P^T)^T=(P^TP)^T=P^TP\to P=P^T=P^TP$
+    - all projection: $P^2=P$
+        > proof: project to vector $\vec{b}: Pb=b\to b=(Pb)=P(Pb)=P^2b\to P^2=P$
     - $b\in C(A)\Rightarrow Pb=b$
         > proof: substitude $b$ with $Ax=b$ in expression of $Pb$
     - $b\perp C(A)\Rightarrow Pb=0$ ($b\in N(A^T)$)
@@ -88,8 +91,10 @@
     - **but $Q$ is square matrix** $\Rightarrow Q^T=Q^{-1}\Rightarrow QQ^T=I\to$ rows are independent, perpendicular and unit vectors.
     - $\det Q=\pm 1$
         > proof: $\det Q^TQ=\det Q^T \det Q=(\det Q)^2=\det I=1$
-    - $A^TA=B^TB=I\Rightarrow (AB)^T(AB)=I$
+    - $A,B$ is orthonormal matrix $\Rightarrow AB,BA$ is orthonormal matrix
         > proof: $(AB)^T(AB)=B^T(A^TA)B=B^TB=I$
+    - $Q^{-1}$ is orthonormal matrix
+        > proof: $Q^{-1}(Q^{-1})^T=Q^T(Q^T)^{-1}=I$
 - projection matrix
     - $P=Q(Q^TQ)^{-1}Q^T=QQ^T$, $Q$ is square $\Rightarrow P=I$.
     - $P^2=P=(QQ^T)(QQ^T)=Q(Q^TQ)Q^T=QQ^T$

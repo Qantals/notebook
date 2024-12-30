@@ -22,3 +22,4 @@
     - $c_{ij}=\sum _ka_{ik}b_{kj}$
     - spectural theorem: $C=\sum _ia_{i}b_{i}+\dots$ is column vector $a_i$ multiply row vector $b_i$.
         - like $A=vv^T$ is row vector multiply column vector
+        - $A=uv^T$ is expand $u$ in column direction and expand $v^T$ in row direction.
