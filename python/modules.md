@@ -120,9 +120,11 @@ with open(file) as f: with file.open() as f:
 
 ### sys
 ```py
-sys.argv # 命令行参数 ['script_name',arg1,...]
 list=sys.path # python搜索库的目录，第一个为运行目录
 sys.path.append(dir) # 对list调用方法
+sys.argv[1:] # 通过命令行传入的参数
+sys.argv[0] # python脚本文件名
+sys.exit() # 0正常退出，其他不正常
 ```
 
 

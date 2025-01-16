@@ -87,6 +87,9 @@ homework:`curl --head --silent https://missing.csail.mit.edu | grep last-modifie
 
 ## 文件
 
+`curl -x http://127.0.0.1:7890 [-I] URL -o filename.iso [--silent]` -I 只请求http响应头，检查连通性
+`ping -w 10 -c 5 www.google.com` 10s超时 5个icmp包
+    `ping 127.0.0.1` `ping localhost`检查与本机的连接
 `wget -O name -P path -c(断点继续) URL`  
 `sh -c "$(curl -fsSL URL)"`静默模式安装
 `mount -o loop [source] [dir]`挂载  
@@ -105,7 +108,7 @@ homework:`curl --head --silent https://missing.csail.mit.edu | grep last-modifie
     - `gzip -d` 解压，`-k`保留原文件
     - `gzip -c abc.txt > abc.txt.gz` 压缩并保留原文件
     - `gunzip -c abc.txt.gz > abc.txt` 解压并保留原文件
-`ln [-s] f1 f2` f2硬（软）链接到f1
+`ln [-s] f1 f2` f1源文件，f2目标文件
 
 ## 系统
 
